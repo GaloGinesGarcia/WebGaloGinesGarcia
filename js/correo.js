@@ -1,58 +1,45 @@
-const RECIPIENT_EMAIL = "galogines1@gmail.com";
-const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`;
+(function () {
+    emailjs.init("d8aGSJLv7JC6fVDx5"); // TU PUBLIC KEY
+})();
 
 const form = document.getElementById("contactForm");
-const userEmailInput = document.getElementById("userEmail");
-const userMessageInput = document.getElementById("userMessage");
-const formStatus = document.getElementById("formStatus");
+const status = document.getElementById("formStatus");
 
-function setStatus(message, ok = true) {
-    formStatus.textContent = message;
-    formStatus.style.color = ok ? "#8bffb5" : "#ff8f8f";
-}
+const now = new Date();
+let hours = now.getHours();
+const minutes = String(now.getMinutes()).padStart(2, "0");
+const ampm = hours >= 12 ? "PM" : "AM";
 
-async function sendContactEmail(fromEmail, message) {
-    const payload = {
-        _subject: "Nuevo mensaje desde la web ZIGO DJ",
-        _captcha: "false",
-        email: fromEmail,
-        message,
-        _template: "table"
+hours = hours % 12;
+hours = hours ? hours : 12; // si es 0, cambiar a 12
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    status.textContent = "Enviando mensaje...";
+    status.style.color = "white";
+
+    const templateParams = {
+        from_email: document.getElementById("userEmail").value,
+        title: "Quiero contactar contigo.",
+        message: document.getElementById("userMessage").value,
+        time: `${hours}:${minutes} ${ampm}`,
     };
 
-    const res = await fetch(FORMSUBMIT_ENDPOINT, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-        },
-        body: JSON.stringify(payload)
-    });
-
-    const data = await res.json().catch(() => ({}));
-
-    if (!res.ok || data.success === "false") {
-        throw new Error(data.message || "No se pudo enviar el correo.");
-    }
-}
-
-form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const fromEmail = userEmailInput.value.trim();
-    const message = userMessageInput.value.trim();
-
-    if (!fromEmail || !message) {
-        setStatus("Completa correo y mensaje.", false);
-        return;
-    }
-
-    try {
-        setStatus("Enviando correo...");
-        await sendContactEmail(fromEmail, message);
-        setStatus(`Correo enviado a ${RECIPIENT_EMAIL}.`);
-        form.reset();
-    } catch (err) {
-        setStatus(`Error al enviar: ${err.message}`, false);
-    }
+    emailjs
+        .send(
+            "service_8nqf4za",   // Service ID
+            "template_p38ydhd",  // Template ID
+            templateParams
+        )
+        .then(() => {
+            status.textContent = "✅ Mensaje enviado correctamente";
+            status.style.color = "limegreen";
+            form.reset();
+        })
+        .catch((error) => {
+            status.textContent = "❌ Error al enviar el mensaje";
+            status.style.color = "red";
+            console.error("EmailJS error:", error);
+        });
 });
