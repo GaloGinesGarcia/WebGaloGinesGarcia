@@ -93,6 +93,18 @@ p{
     margin: 15%;
 }
 
+.separator {
+  width: calc(100% - 40px); /* margen lateral */
+  margin: 40px auto; /* espacio arriba/abajo y centrado */
+  height: 1px; /* grosor fino */
+  
+  background: rgba(255, 255, 255, 0.3); /* translúcido */
+  backdrop-filter: blur(6px); /* efecto cristal */
+  -webkit-backdrop-filter: blur(6px); /* soporte Safari */
+
+  border-radius: 10px; /* suaviza bordes */
+}
+
 
 /* ================= GALERIA DE CUADROS ================= */
 .galeria {
@@ -312,7 +324,11 @@ footer p {
 }
 
 @media (max-width: 480px) {
-    
+    header {
+        padding-top: 14px;
+        padding-bottom: 10px;
+    }
+
     header > div {
         width: 100%;
         max-width: none;
@@ -468,8 +484,9 @@ footer p {
     }
 
     main {
-        margin-top: 200px; /* espacio ajustado con menú hamburguesa */
+        margin-top: 220px; /* espacio ajustado con header movil mas bajo */
     }
 }
+
 
 
