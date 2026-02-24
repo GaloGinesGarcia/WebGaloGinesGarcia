@@ -1,0 +1,190 @@
+/* ================= TARJETAS ANIMADAS ================= */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    gap: 22px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.cards-grid .card {
+    position: relative;
+    height: 250px;
+    border: 0;
+    background: transparent;
+    perspective: 1000px;
+    border-radius: 0;
+    overflow: hidden;
+    --card-bg: linear-gradient(155deg, #1f1f1f 0%, #2d2d2d 55%, #3a3a3a 100%);
+    --card-bg-hover: linear-gradient(155deg, #3b3b3b 0%, #4b4b4b 52%, #5a5a5a 100%);
+}
+
+.cards-grid .card .face {
+    position: absolute;
+    inset: 0;
+    border-radius: 0;
+    transition: transform 0.85s ease, background-color 0.85s ease, box-shadow 0.85s ease;
+}
+
+.cards-grid .card .face .content {
+    padding: 26px 22px;
+}
+
+.cards-grid .card .face.face1 {
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--card-bg);
+    color: #f5f5f5;
+    z-index: 2;
+    transform: translateY(0);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.cards-grid .card .face.face1 h4 {
+    margin: 0 0 10px;
+    font-size: 1.65rem;
+}
+
+.cards-grid .card .face.face1 p {
+    margin: 0;
+    color: #d9d9d9;
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.cards-grid .card .face.face2 {
+    inset: 0;
+    display: flex;
+    align-items: flex-start;
+    background: #ffffff;
+    color: #1f1f1f;
+    transform: translateY(-100%);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+    z-index: 1;
+}
+
+.cards-grid .card .face.face2 .content {
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: transform 0.65s ease 0.08s, opacity 0.65s ease 0.08s;
+}
+
+.cards-grid .card .face.face2 h3 {
+    margin: 0 0 10px;
+    font-size: 1.16rem;
+}
+
+.cards-grid .card .face.face2 p {
+    margin: 0;
+    color: #444;
+    line-height: 1.55;
+    font-size: 0.94rem;
+}
+
+.cards-grid .card:hover .face.face1 {
+    transform: translateY(-100%);
+    background: var(--card-bg-hover);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+}
+
+.cards-grid .card.tech-html5 {
+    --card-bg: linear-gradient(155deg, #b34700 0%, #e35d00 55%, #ff7a1a 100%);
+    --card-bg-hover: linear-gradient(155deg, #c95500 0%, #f06c0f 55%, #ff8b2f 100%);
+}
+
+.cards-grid .card.tech-css3 {
+    --card-bg: linear-gradient(155deg, #004a9f 0%, #0067d9 55%, #1e86ff 100%);
+    --card-bg-hover: linear-gradient(155deg, #0a59b6 0%, #1b78ee 55%, #3693ff 100%);
+}
+
+.cards-grid .card.tech-javascript {
+    --card-bg: linear-gradient(155deg, #9b8700 0%, #c9ad00 55%, #f2cf00 100%);
+    --card-bg-hover: linear-gradient(155deg, #ad9800 0%, #d9bd10 55%, #ffdb2b 100%);
+}
+
+.cards-grid .card.tech-php {
+    --card-bg: linear-gradient(155deg, #3f3f8a 0%, #5757b0 55%, #7373ca 100%);
+    --card-bg-hover: linear-gradient(155deg, #4d4d9a 0%, #6666bf 55%, #8181d7 100%);
+}
+
+.cards-grid .card.tech-angular {
+    --card-bg: linear-gradient(155deg, #8d001e 0%, #b40029 55%, #dc143c 100%);
+    --card-bg-hover: linear-gradient(155deg, #a10022 0%, #ca1131 55%, #ee3358 100%);
+}
+
+.cards-grid .card.tech-node {
+    --card-bg: linear-gradient(155deg, #1d5d26 0%, #2f7d33 55%, #49a14f 100%);
+    --card-bg-hover: linear-gradient(155deg, #277231 0%, #3b9040 55%, #59b760 100%);
+}
+
+.cards-grid .card.tech-java {
+    --card-bg: linear-gradient(155deg, #8f3a00 0%, #b24a00 55%, #d8641e 100%);
+    --card-bg-hover: linear-gradient(155deg, #a44800 0%, #c65a0f 55%, #ea7530 100%);
+}
+
+.cards-grid .card.tech-python {
+    --card-bg: linear-gradient(155deg, #1f4f86 0%, #2f6ead 55%, #3f8ecf 100%);
+    --card-bg-hover: linear-gradient(155deg, #29619e 0%, #3a7fc2 55%, #52a0de 100%);
+}
+
+.cards-grid .card.tech-flutter {
+    --card-bg: linear-gradient(155deg, #006d98 0%, #008fcb 55%, #14aef1 100%);
+    --card-bg-hover: linear-gradient(155deg, #0a80af 0%, #16a1dc 55%, #32bdf7 100%);
+}
+
+.cards-grid .card.tech-csharp {
+    --card-bg: linear-gradient(155deg, #4b1b8a 0%, #6428b0 55%, #7e3ad3 100%);
+    --card-bg-hover: linear-gradient(155deg, #5a26a1 0%, #7637c6 55%, #9050df 100%);
+}
+
+.cards-grid .card.tech-sql {
+    --card-bg: linear-gradient(155deg, #005a72 0%, #007794 55%, #1096b8 100%);
+    --card-bg-hover: linear-gradient(155deg, #0a6f8a 0%, #1189ab 55%, #27a7c8 100%);
+}
+
+.cards-grid .card.tech-go {
+    --card-bg: linear-gradient(155deg, #00758a 0%, #0095ae 55%, #19b2ca 100%);
+    --card-bg-hover: linear-gradient(155deg, #0b879e 0%, #14a5bf 55%, #33bfd6 100%);
+}
+
+.cards-grid .card.tech-xml {
+    --card-bg: linear-gradient(155deg, #5b5b5b 0%, #737373 55%, #8a8a8a 100%);
+    --card-bg-hover: linear-gradient(155deg, #6b6b6b 0%, #848484 55%, #9c9c9c 100%);
+}
+
+.cards-grid .card.tech-dtd {
+    --card-bg: linear-gradient(155deg, #4f4f4f 0%, #676767 55%, #808080 100%);
+    --card-bg-hover: linear-gradient(155deg, #606060 0%, #797979 55%, #939393 100%);
+}
+
+.cards-grid .card.tech-xsd {
+    --card-bg: linear-gradient(155deg, #2a5a5a 0%, #367272 55%, #4b8b8b 100%);
+    --card-bg-hover: linear-gradient(155deg, #336b6b 0%, #428686 55%, #58a1a1 100%);
+}
+
+.cards-grid .card.tech-git {
+    --card-bg: linear-gradient(155deg, #a33818 0%, #c84a22 55%, #e7643f 100%);
+    --card-bg-hover: linear-gradient(155deg, #b64622 0%, #d95b33 55%, #f37a57 100%);
+}
+
+.cards-grid .card.tech-bitbucket {
+    --card-bg: linear-gradient(155deg, #0b3f91 0%, #1558ba 55%, #2b74dc 100%);
+    --card-bg-hover: linear-gradient(155deg, #1451a8 0%, #2469cf 55%, #4288e6 100%);
+}
+
+.cards-grid .card.tech-aws {
+    --card-bg: linear-gradient(155deg, #b06a00 0%, #cf8100 55%, #f39a1a 100%);
+    --card-bg-hover: linear-gradient(155deg, #c57a05 0%, #e29212 55%, #ffab33 100%);
+}
+
+.cards-grid .card:hover .face.face2 {
+    transform: translateY(0);
+}
+
+.cards-grid .card:hover .face.face2 .content {
+    opacity: 1;
+    transform: translateY(0);
+}

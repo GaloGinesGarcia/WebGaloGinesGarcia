@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Meta básico -->
+    <!-- Meta basico -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Descripción de tu página web">
+    <meta name="description" content="Descripcion de tu pagina web">
     <meta name="author" content="Tu nombre">
-    <title>Galo Ginés García</title>
+    <title>Galo Gines Garcia</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="../css/estilo1.css">
+    <link rel="stylesheet" href="../css/estiloTarjetas.css">
 </head>
 
 <body>
     <header>
         <div>
-            <h1><a href="../index.html" style="text-decoration: none; color: inherit;">Galo Ginés García</a></h1>
+            <h1><a href="../index.html" style="text-decoration: none; color: inherit;">Galo Gines Garcia</a></h1>
             <nav>
                 <ul>
                     <li><a href="../index.html">Profesion</a></li>
                     <li><a href="servicios.html">Servicios</a></li>
-                    <li><a href="biografia.html">Biografía</a></li>
-                    <li><a href="tecnologias.html">Tecnologías</a></li>
+                    <li><a href="biografia.html">Biografia</a></li>
+                    <li><a href="tecnologias.html">Tecnologias</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
@@ -39,54 +40,313 @@
                     <li><a href="../index.html">Profesion</a></li>
                     <li><a href="servicios.html">Servicios</a></li>
                     <li><a href="biografia.html">Biografia</a></li>
-                    <li><a href="tecnologias.html">Tecnologías</a></li>
+                    <li><a href="tecnologias.html">Tecnologias</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </details>
         </div>
     </header>
+
     <main>
-    <h3 class="text-center mb-4 text-white">Tecnologías utilizables</h3>
+        <h3 class="text-center mb-4 text-white">Tecnologias utilizables</h3>
+        <section class="container cards-grid">
+            <article class="card tech-html5">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>HTML5</h4>
+                        <p>Semantica y estructura limpia.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Estructura Web Solida</h3>
+                        <p>Desarrollo maquetado semantico con buenas practicas de accesibilidad y SEO.</p>
+                    </div>
+                </div>
+            </article>
 
-    <div class="galeria">
-    <!-- 6 filas de 4 cuadrados = 24 cuadrados -->
-    <!-- Puedes duplicar los div según quieras -->
-    <div class="cuadro"><img src="https://cataas.com/cat?1" alt="Gato aleatorio"></div>
-    <div class="cuadro"><img src="https://cataas.com/cat?2" alt="Gato aleatorio"></div>
-    <div class="cuadro"><img src="https://cataas.com/cat?3" alt="Gato aleatorio"></div>
-    <div class="cuadro"><img src="https://cataas.com/cat?4" alt="Gato aleatorio"></div>
+            <article class="card tech-css3">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>CSS3</h4>
+                        <p>Estilos modernos y responsive.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Diseno Visual y Responsive</h3>
+                        <p>Creo interfaces adaptables con layouts flexibles, animaciones y estilo consistente.</p>
+                    </div>
+                </div>
+            </article>
 
-    <div class="cuadro"><img src="https://cataas.com/cat?5" alt="Gato aleatorio"></div>
-    <div class="cuadro"><img src="https://cataas.com/cat?6" alt="Gato aleatorio"></div>
-    <div class="cuadro"><img src="https://cataas.com/cat?7" alt="Gato aleatorio"></div>
-    <div class="cuadro"><img src="https://cataas.com/cat?8" alt="Gato aleatorio"></div>
+            <article class="card tech-javascript">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>JavaScript</h4>
+                        <p>Interactividad en el navegador.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Logica en Cliente</h3>
+                        <p>Implemento interactividad, validaciones y consumo de datos para mejorar la experiencia.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="container cards-grid">
+            <article class="card tech-php">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>PHP</h4>
+                        <p>Backend web del lado servidor.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Backend Web con PHP</h3>
+                        <p>Desarrollo logica de servidor, manejo de formularios y conexion con bases de datos.</p>
+                    </div>
+                </div>
+            </article>
 
-    <div class="cuadro"><img src="https://cataas.com/cat?9" alt="Gato aleatorio"></div>
-    <div class="cuadro"><img src="https://cataas.com/cat?10" alt="Gato aleatorio"></div>
-    <div class="cuadro"><img src="https://cataas.com/cat?11" alt="Gato aleatorio"></div>
-    <div class="cuadro"><img src="https://cataas.com/cat?12" alt="Gato aleatorio"></div>
+            <article class="card tech-angular">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>Angular</h4>
+                        <p>Framework para aplicaciones SPA.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>SPA con Angular</h3>
+                        <p>Construyo aplicaciones modulares con componentes, servicios y enrutado.</p>
+                    </div>
+                </div>
+            </article>
 
-</div>
-</main>
+            <article class="card tech-node">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>Node</h4>
+                        <p>Runtime para servicios backend.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>APIs con Node.js</h3>
+                        <p>Creo servicios backend escalables y endpoints REST para integrar front y base de datos.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="container cards-grid">
+            <article class="card tech-java">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>Java</h4>
+                        <p>POO robusta y mantenible.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Desarrollo con Java</h3>
+                        <p>Programo aplicaciones orientadas a objetos con codigo robusto y mantenible.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card tech-python">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>Python</h4>
+                        <p>Automatizacion y productividad.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Automatizacion y Datos</h3>
+                        <p>Desarrollo scripts, utilidades backend y procesamiento eficiente de informacion.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card tech-flutter">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>Flutter</h4>
+                        <p>Apps moviles multiplataforma.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Apps Multiplataforma</h3>
+                        <p>Creo aplicaciones moviles para Android e iOS con una sola base de codigo.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="container cards-grid">
+            <article class="card tech-csharp">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>C#</h4>
+                        <p>Aplicaciones estructuradas y eficientes.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Soluciones con C#</h3>
+                        <p>Desarrollo aplicaciones con enfoque en arquitectura limpia y buen rendimiento.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card tech-sql">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>SQL</h4>
+                        <p>Consultas y modelado de datos.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Gestion de Bases de Datos</h3>
+                        <p>Diseno consultas, joins y optimizacion de datos para obtener informacion precisa.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card tech-go">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>GO</h4>
+                        <p>Alto rendimiento y concurrencia.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Servicios en Go</h3>
+                        <p>Construyo APIs y procesos concurrentes de alto rendimiento y baja latencia.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="container cards-grid">
+            <article class="card tech-xml">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>XML</h4>
+                        <p>Estructuracion de informacion.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Intercambio de Datos</h3>
+                        <p>Estructuro informacion en formato XML para integracion entre sistemas.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card tech-dtd">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>DTD</h4>
+                        <p>Definicion de reglas XML.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Reglas de Estructura XML</h3>
+                        <p>Defino la estructura valida de documentos XML con DTD para asegurar consistencia.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card tech-xsd">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>XSD</h4>
+                        <p>Esquemas y validacion XML.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Validacion con XSD</h3>
+                        <p>Especifico tipos y restricciones en XML para validar datos con mayor precision.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="container cards-grid">
+            <article class="card tech-git">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>Git</h4>
+                        <p>Versionado y trabajo en equipo.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Control de Versiones</h3>
+                        <p>Gestiono ramas, historial y colaboracion segura en proyectos de desarrollo.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card tech-bitbucket">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>BitBucket</h4>
+                        <p>Repositorios y colaboracion.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Repositorios y Flujo</h3>
+                        <p>Organizo repositorios remotos, revisiones y trabajo en equipo con pipelines.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card tech-aws">
+                <div class="face face1">
+                    <div class="content">
+                        <h4>AWS</h4>
+                        <p>Infraestructura y despliegue cloud.</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <h3>Cloud en AWS</h3>
+                        <p>Despliego y mantengo servicios en la nube con enfoque en escalabilidad y disponibilidad.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
     <footer>
-            
         <div>
             <div>
-                <a href="https://www.instagram.com/gaaliitoo_.gg/"  target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                <img src="../asserts/images/instagramImg.png" class="social-icon instagram-icon">
+                <a href="https://www.instagram.com/gaaliitoo_.gg/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                    <img src="../asserts/images/instagramImg.png" class="social-icon instagram-icon">
                 </a>
-                <a href="https://www.linkedin.com/in/galo-gin%C3%A9s-garc%C3%ADa-638410287/"  target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                <img src="../asserts/images/soundcloudImg.png" class="social-icon soundcloud-icon">
+                <a href="https://www.linkedin.com/in/galo-gin%C3%A9s-garc%C3%ADa-638410287/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                    <img src="../asserts/images/soundcloudImg.png" class="social-icon soundcloud-icon">
                 </a>
             </div>
-            <p class="mb-0">© 2026 Mi Web. Todos los derechos reservados.</p>
+            <p class="mb-0">&copy; 2026 Mi Web. Todos los derechos reservados.</p>
         </div>
     </footer>
-    <!-- OVERLAY TRANSICIÓN -->
-<div id="transition-overlay"></div>
 
-<script src="../js/transicion.js?v=2"></script>
+    <!-- OVERLAY TRANSICION -->
+    <div id="transition-overlay"></div>
+
+    <script src="../js/transicion.js?v=2"></script>
 </body>
 </html>
+
 
 
