@@ -210,7 +210,19 @@
         width: 88%;
         max-width: 520px;
         gap: 16px;
-        margin: 20px auto 30px;
+        margin: 0 auto;
+    }
+
+    .cards-grid + .cards-grid {
+        margin-top: 16px;
+    }
+
+    .cards-grid:first-of-type {
+        margin-top: 20px;
+    }
+
+    .cards-grid:last-of-type {
+        margin-bottom: 30px;
     }
 
     .cards-grid .card {
