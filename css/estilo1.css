@@ -292,10 +292,7 @@ footer p {
 
 /* ================= MEDIA QUERIES PARA RESPONSIVE ================= */
 @media (max-width: 768px) {
-    .cards-grid {
-        grid-template-columns: repeat(2, minmax(180px, 1fr));
-        gap: 20px;
-    }
+    
 
     header h1 {
         font-size: 2.15rem; /* reduce tamaño en tablet/móvil */
@@ -315,16 +312,7 @@ footer p {
 }
 
 @media (max-width: 480px) {
-    .cards-grid {
-        grid-template-columns: 1fr;
-        width: 88%;
-        gap: 18px;
-    }
-
-    .cards-grid .card {
-        height: 235px;
-    }
-
+    
     header > div {
         width: 100%;
         max-width: none;

@@ -188,3 +188,10 @@
     opacity: 1;
     transform: translateY(0);
 }
+
+@media (max-width: 480px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
