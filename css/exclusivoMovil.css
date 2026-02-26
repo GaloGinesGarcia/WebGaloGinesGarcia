@@ -14,10 +14,10 @@ body.mobile-menu-open {
 
     .mobile-dropdown {
         display: block;
-        z-index: 2100;
+        z-index: 2202;
         text-align: left;
-        position: absolute;
-        top: calc(50% - 4px);
+        position: fixed;
+        top: 26px;
         right: 12px;
     }
 
