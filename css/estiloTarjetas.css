@@ -189,6 +189,38 @@
     transform: translateY(0);
 }
 
+@media (hover: none) and (pointer: coarse) {
+    .cards-grid .card:hover .face.face1 {
+        transform: translateY(0);
+        background: var(--card-bg);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .cards-grid .card:hover .face.face2 {
+        transform: translateY(-100%);
+    }
+
+    .cards-grid .card:hover .face.face2 .content {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+
+    .cards-grid .card.is-open .face.face1 {
+        transform: translateY(-100%);
+        background: var(--card-bg-hover);
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+    }
+
+    .cards-grid .card.is-open .face.face2 {
+        transform: translateY(0);
+    }
+
+    .cards-grid .card.is-open .face.face2 .content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @media (max-width: 1024px) {
     .cards-grid {
         grid-template-columns: 1fr;
