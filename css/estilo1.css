@@ -127,7 +127,7 @@ footer p {
 /* ================= FUENTE PERSONALIZADA ================= */
 @font-face {
     font-family: 'FuenteTitulo';
-    src: url('../asserts/fonts/ginebra_font.ttf') format('truetype');
+    src: url('../assets/fonts/ginebra_font.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
