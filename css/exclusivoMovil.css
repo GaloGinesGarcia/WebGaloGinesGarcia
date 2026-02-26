@@ -1,0 +1,8 @@
+/* ================= Menú movil ================= */
+.mobile-dropdown {
+    display: none;
+}
+
+body.mobile-menu-open {
+    overflow: hidden;
+}

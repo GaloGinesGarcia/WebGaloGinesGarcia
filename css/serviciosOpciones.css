@@ -1,0 +1,53 @@
+/* ================= SERVICIOS OPCIONES ================= */
+.servicios-opciones {
+    width: min(92%, 1100px);
+    margin: 0 auto 48px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.servicio-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    padding: 20px 16px;
+    color: white;
+    text-align: left;
+}
+
+.servicio-card h4 {
+    margin: 0 0 12px;
+    font-size: 1.1rem;
+}
+
+.servicio-dropdown summary {
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.servicio-dropdown ul {
+    margin: 0 0 14px 18px;
+    padding: 0;
+}
+
+.servicio-dropdown li {
+    margin-bottom: 7px;
+}
+
+.btn-pedir {
+    width: 100%;
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: white;
+    background: #22a447;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-pedir:hover {
+    background: #1c883b;
+}
