@@ -33,12 +33,12 @@ form.addEventListener("submit", function (e) {
             templateParams
         )
         .then(() => {
-            status.textContent = "✅ Mensaje enviado correctamente";
+            status.textContent = "✅ Correo enviado correctamente";
             status.style.color = "limegreen";
             form.reset();
         })
         .catch((error) => {
-            status.textContent = "❌ Error al enviar el mensaje";
+            status.textContent = "❌ Error al enviar el correo";
             status.style.color = "red";
             console.error("EmailJS error:", error);
         });
