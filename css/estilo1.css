@@ -59,7 +59,7 @@ header::after{
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center; /* centra horizontalmente los li */
+    justify-content: space-evenly; /* centra horizontalmente los li */
     gap: 30px;               /* espacio entre enlaces */
     padding: 0;
     margin: 0;
@@ -78,7 +78,7 @@ header nav ul li a {
 
 /* Hover de los enlaces */
 header nav ul li a:hover {
-    color: grey;             /* cambia a gris al pasar el ratón */
+    color: rgb(104, 144, 245);             /* cambia a gris al pasar el ratón */
 }
 /* ================= BODY ================= */
 body {
@@ -108,14 +108,16 @@ body::before {
 
 /* ================= MAIN ================= */
 main {
-    margin-top: 200px; 
+    margin-top: 100px; 
     text-align: center;
 }
 
 p{
     text-align: center;
     color: white;
-    margin: 15%;
+    margin: 7%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 .separator {
@@ -156,8 +158,8 @@ footer p {
     width: 10%;
 }
 
-.soundcloud-icon {
-    width: 5%;
+.linkeding-icon {
+    width: 3.2%;
 }
 
 /* ================= FUENTE PERSONALIZADA ================= */
