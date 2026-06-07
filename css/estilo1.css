@@ -162,6 +162,109 @@ footer p {
     width: 3.2%;
 }
 
+/* ================= HERO ================= */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    perspective: 1200px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* contenido encima de efectos */
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 3px;
+    margin: 10px 0;
+
+    will-change: transform, opacity;
+    text-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+}
+
+.hero-subtitle {
+    opacity: 0.6;
+    font-size: 1rem;
+    letter-spacing: 1px;
+
+    will-change: transform, opacity;
+}
+
+.hero-text {
+    opacity: 0.5;
+    max-width: 500px;
+    margin-top: 10px;
+
+    will-change: transform, opacity;
+}
+
+.hero-symbol {
+    display: flex;
+    gap: 12px;
+    font-size: 60px;
+    margin: 20px 0;
+    color: white;
+
+    transform-style: preserve-3d;
+}
+
+.hero-symbol span {
+    display: inline-block;
+    text-shadow: 0 0 20px rgba(0,255,255,0.35);
+    will-change: transform, opacity;
+}
+
+/* ================= SECCIONES (PANTALLAS) ================= */
+.panel {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    will-change: transform, opacity;
+}
+
+/* títulos de sección */
+.section-title {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* texto de sección */
+.section-text {
+    max-width: 600px;
+    opacity: 0.55;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* links */
+.section-link {
+    color: cyan;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.section-link:hover {
+    transform: translateY(-3px);
+    opacity: 0.8;
+}
+
 /* ================= FUENTE PERSONALIZADA ================= */
 @font-face {
     font-family: 'FuenteTitulo';

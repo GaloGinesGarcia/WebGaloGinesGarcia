@@ -49,38 +49,54 @@
         </div>
     </header>
     <main>
-    <section>
-        <h3 class="text-center mb-4 text-white">Desarrollador de aplicaciones multiplataforma</h3>
-        <p>
-            Soy un desarrollador apasionado por la tecnología, especializado en desarrollo web y aplicaciones multiplataforma. 
-            Desde que comencé en el mundo de la programación, me ha fascinado la capacidad de transformar ideas en soluciones 
-            digitales que realmente impacten a las personas y las empresas. Disfruto tanto del frontend, creando interfaces 
-            limpias, intuitivas y accesibles, como del backend, estructurando sistemas eficientes y seguros que soporten 
-            cualquier aplicación a gran escala.
-            Mi experiencia abarca una amplia variedad de tecnologías y frameworks modernos, desde HTML, CSS y JavaScript, 
-            hasta React, Angular, PHP y Node.js, así como bases de datos SQL y NoSQL. Además, tengo un fuerte enfoque 
-            en apps multiplataforma, utilizando herramientas como Flutter y React Native, Java, Python, que permiten que un mismo código 
-            funcione tanto en iOS como en Android sin perder rendimiento ni experiencia de usuario.
-        </p>
-        <p>
-            Más allá del código, creo firmemente en el poder de la colaboración. He trabajado en proyectos de equipos ágiles, 
-            participando en todas las fases: desde el diseño de la arquitectura y prototipos, hasta la implementación, pruebas 
-            y despliegue final. Me interesa especialmente el desarrollo de experiencias interactivas y responsivas, así como 
-            la optimización del rendimiento y la escalabilidad de los sistemas.
+    <section class="hero panel">
 
-            Soy curioso por naturaleza y siempre busco aprender nuevas tecnologías y mejores prácticas, manteniéndome 
-            actualizado con las tendencias del sector. Esto me permite proponer soluciones innovadoras y eficientes, adaptadas 
-            a los requerimientos de cada proyecto. También disfruto compartiendo conocimiento, ya sea a través de mentorías, 
-            blogs o colaborando en comunidades de desarrolladores.
+    <h3 class="hero-subtitle text-center text-white">
+        Desarrollador de aplicaciones multiplataforma
+    </h3>
 
-            En definitiva, mi objetivo como profesional es crear productos digitales de calidad que conecten con los usuarios, 
-            combinando creatividad, lógica y pasión por la tecnología. Cada proyecto es una oportunidad para crecer, innovar y 
-            dejar una huella tangible en el mundo digital.
+    <h1 class="hero-title text-center">
+        Galo Ginés García
+    </h1>
+
+    <div class="hero-symbol">
+        <span>&lt;</span>
+        <span>/</span>
+        <span>&gt;</span>
+    </div>
+
+    <p class="hero-text text-center">
+        Transformo ideas en soluciones digitales modernas
+    </p>
+
+</section>
+<section class="panel about-preview">
+
+        <h2 class="section-title">Sobre mí</h2>
+
+        <p class="section-text">
+            Desarrollador multiplataforma enfocado en crear soluciones reales,
+            combinando frontend, backend y aplicaciones móviles.
         </p>
-        <p>
-            
+
+        <a href="html/biografia.html" class="section-link">
+            Ver trayectoria →
+        </a>
+
+</section>
+<section class="panel stack-preview">
+
+        <h2 class="section-title">Tecnologías</h2>
+
+        <p class="section-text">
+            JavaScript, Java, PHP, Node.js, Flutter, SQL y más.
         </p>
-    </section>
+
+        <a href="html/tecnologias.html" class="section-link">
+            Ver stack completo →
+        </a>
+
+</section>
 </main>
     <footer>
             
@@ -98,7 +114,9 @@
     </footer>
     <!-- OVERLAY TRANSICIÓN -->
 <div id="transition-overlay"></div>
-
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="./js/hero.js"></script>
 <script src="./js/transicion.js?v=2"></script>
 </body>
 </html>
