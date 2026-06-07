@@ -2,7 +2,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 window.addEventListener("load", () => {
 
-    // ================= HERO =================
+    // HERO
     gsap.set(".hero-title", { opacity: 0, y: 100, scale: 0.95 });
     gsap.set(".hero-subtitle", { opacity: 0, y: 40 });
     gsap.set(".hero-text", { opacity: 0, y: 30 });
@@ -12,10 +12,26 @@ window.addEventListener("load", () => {
 
     tl.to(".hero-subtitle", { opacity: 1, y: 0, duration: 0.8 })
       .to(".hero-title", { opacity: 1, y: 0, scale: 1, duration: 1 }, "-=0.3")
-      .to(".hero-symbol span", { opacity: 1, rotateX: 0, y: 0, stagger: 0.15, duration: 0.8 }, "-=0.6")
-      .to(".hero-text", { opacity: 1, y: 0, duration: 0.8 }, "-=0.4");
+      .to(".hero-symbol span", { opacity: 1, rotateX: 0, y: 0, stagger: 0.15 })
+      .to(".hero-text", { opacity: 1, y: 0, duration: 0.8 });
 
-    // HERO scroll effect
+      // ================= ICONO 3D ROTATION =================
+
+    gsap.to(".hero-symbol span", {
+    rotateY: 360,
+    rotateX: 360,
+    duration: 7,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut",
+    transformPerspective: 0,
+    transformOrigin: "center center",
+    stagger: 0.15
+});
+
+
+
+    // SCROLL HERO
     gsap.to(".hero", {
         scrollTrigger: {
             trigger: ".hero",
@@ -28,7 +44,7 @@ window.addEventListener("load", () => {
         y: -60
     });
 
-    // ================= ABOUT =================
+    // ABOUT
     gsap.from(".about-preview", {
         scrollTrigger: {
             trigger: ".about-preview",
@@ -39,7 +55,7 @@ window.addEventListener("load", () => {
         duration: 1
     });
 
-    // ================= STACK =================
+    // STACK
     gsap.from(".stack-preview", {
         scrollTrigger: {
             trigger: ".stack-preview",
@@ -50,10 +66,9 @@ window.addEventListener("load", () => {
         duration: 1
     });
 
-    // ================= CARDS (ENTRADA 3D MEJORADA) =================
+    // ================= CARDS ENTRY (IMPORTANTE) =================
 
-    // IMPORTANTE: estado inicial
-    gsap.set(".cards-grid .card", {
+    gsap.set(".cards-grid .card-inner", {
         opacity: 0,
         y: 120,
         rotateX: 25,
@@ -61,8 +76,7 @@ window.addEventListener("load", () => {
         transformOrigin: "center bottom"
     });
 
-    // animación scroll
-    gsap.to(".cards-grid .card", {
+    gsap.to(".cards-grid .card-inner", {
         scrollTrigger: {
             trigger: ".cards-grid",
             start: "top 85%",
@@ -75,10 +89,7 @@ window.addEventListener("load", () => {
         scale: 1,
         duration: 0.9,
         ease: "power4.out",
-        stagger: {
-            each: 0.12,
-            from: "start"
-        }
+        stagger: 0.12
     });
 
     ScrollTrigger.refresh();

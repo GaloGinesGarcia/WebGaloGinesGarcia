@@ -213,7 +213,7 @@ footer p {
     gap: 12px;
     font-size: 60px;
     margin: 20px 0;
-    color: white;
+    color: rgb(47, 113, 255);
 
     transform-style: preserve-3d;
 }
@@ -264,6 +264,9 @@ footer p {
     transform: translateY(-3px);
     opacity: 0.8;
 }
+
+/* ================ ANIMACIONES TECNOLOGIAS ================ */
+
 
 /* ================= FUENTE PERSONALIZADA ================= */
 @font-face {
