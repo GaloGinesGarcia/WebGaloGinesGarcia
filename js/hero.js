@@ -1,3 +1,4 @@
+// ================= FICHERO DE ANIMACIONES =================
 gsap.registerPlugin(ScrollTrigger);
 
 window.addEventListener("load", () => {

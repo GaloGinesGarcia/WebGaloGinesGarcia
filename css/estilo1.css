@@ -187,7 +187,6 @@ footer p {
     color: white;
     letter-spacing: 3px;
     margin: 10px 0;
-
     will-change: transform, opacity;
     text-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
 }
@@ -196,7 +195,6 @@ footer p {
     opacity: 0.6;
     font-size: 1rem;
     letter-spacing: 1px;
-
     will-change: transform, opacity;
 }
 

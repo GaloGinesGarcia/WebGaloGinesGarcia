@@ -1,3 +1,4 @@
+// ================= FICHERO DE CONFIGURACIÓN GSAP=================
 gsap.registerPlugin(ScrollTrigger);
 
 // LENIS
