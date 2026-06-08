@@ -117,3 +117,103 @@
         transform: translateY(0) scale(1);
     }
 }
+
+/* PLANETA ORBITAL MAIN */
+/* ================= ORBITA TECNOLOGICA ================= */
+
+.tech-orbit{
+    height: 500px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+.orbit-container{
+    position:relative;
+    width:650px;
+    height:650px;
+}
+
+.orbit{
+    position:absolute;
+    top:50%;
+    left:50%;
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:
+    0 0 12px rgba(255,255,255,.15),
+    inset 0 0 12px rgba(255,255,255,.08);
+    border-radius:50%;
+    transform-style:preserve-3d;
+}
+
+.orbit-1{
+    width:220px;
+    height:220px;
+    margin-left:-110px;
+    margin-top:-110px;
+}
+
+.orbit-2{
+    width:300px;
+    height:300px;
+    margin-left:-150px;
+    margin-top:-150px;
+    transform:rotateX(65deg);
+}
+
+.orbit-3{
+    width:360px;
+    height:360px;
+    margin-left:-180px;
+    margin-top:-180px;
+    transform:rotateY(75deg);
+}
+.orbit-4{
+    width:430px;
+    height:430px;
+    margin-left:-215px;
+    margin-top:-215px;
+    transform:rotateX(35deg);
+}
+
+.orbit-5{
+    width:500px;
+    height:500px;
+    margin-left:-250px;
+    margin-top:-250px;
+    transform:rotateY(45deg);
+}
+
+.orbit-6{
+    width:560px;
+    height:560px;
+    margin-left:-280px;
+    margin-top:-280px;
+    transform:rotateX(80deg);
+}
+
+.orbit-7{
+    width:620px;
+    height:620px;
+    margin-left:-310px;
+    margin-top:-310px;
+    transform:rotateY(20deg);
+}
+
+.core{
+    position:absolute;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:white;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    box-shadow:
+        0 0 30px rgba(255,255,255,.9),
+        0 0 60px rgba(255,255,255,.7),
+        0 0 120px rgba(255,255,255,.4);
+}

@@ -30,6 +30,87 @@ window.addEventListener("load", () => {
     stagger: 0.15
 });
 
+    // ================= ORBITA DE PUNTOS MAIN =================
+    gsap.to(".orbit-1", {
+        rotateZ: 360,
+        duration: 14,
+        repeat: -1,
+        ease: "none"
+    });
+
+    gsap.to(".orbit-2", {
+        rotateZ: -360,
+        duration: 18,
+        repeat: -1,
+        ease: "none"
+    });
+
+    gsap.to(".orbit-3", {
+        rotateZ: 360,
+        duration: 22,
+        repeat: -1,
+        ease: "none"
+    });
+    gsap.to(".orbit-4", {
+    rotateZ: -360,
+    duration: 25,
+    repeat: -1,
+    ease: "none"
+    });
+
+    gsap.to(".orbit-5", {
+        rotateZ: 360,
+        duration: 28,
+        repeat: -1,
+        ease: "none"
+    });
+
+    gsap.to(".orbit-6", {
+        rotateZ: -360,
+        duration: 32,
+        repeat: -1,
+        ease: "none"
+    });
+
+    gsap.to(".orbit-7", {
+        rotateZ: 360,
+        duration: 38,
+        repeat: -1,
+        ease: "none"
+    });
+
+    const orbit = document.querySelector(".orbit-container");
+
+if(orbit){
+
+    orbit.addEventListener("mousemove",(e)=>{
+
+        const rect = orbit.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const rotateY = ((x / rect.width) - 0.5) * 25;
+        const rotateX = ((y / rect.height) - 0.5) * -25;
+
+        gsap.to(orbit,{
+            rotateY,
+            rotateX,
+            duration:0.5
+        });
+    });
+
+    orbit.addEventListener("mouseleave",()=>{
+
+        gsap.to(orbit,{
+            rotateX:0,
+            rotateY:0,
+            duration:1
+        });
+
+    });
+
+}
 
 
     // SCROLL HERO
