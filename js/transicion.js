@@ -1,9 +1,10 @@
+gsap.registerPlugin();
+
 document.addEventListener("DOMContentLoaded", () => {
+
     const overlay = document.getElementById("transition-overlay");
-    const cinematicEntryTime = 1300;
-    const quickEntryTime = 220;
-    const exitTime = 700;
     let isLeaving = false;
+
     const url = new URL(window.location.href);
     const cameFromInternalNav = url.searchParams.get("_tr") === "1";
 
@@ -12,9 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.history.replaceState({}, "", url.toString());
     }
 
-    if (!overlay) {
-        return;
-    }
+    if (!overlay) return;
 
     overlay.innerHTML = `
         <div class="loader-stage">
@@ -22,14 +21,26 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="loader-title">Galo Ginés García</div>
         </div>
     `;
+
     overlay.classList.toggle("quick", cameFromInternalNav);
 
-    setTimeout(() => {
-        requestAnimationFrame(() => {
-            overlay.classList.add("hidden");
-        });
-    }, cameFromInternalNav ? quickEntryTime : cinematicEntryTime);
+    // ================= ENTRADA OVERLAY =================
+    gsap.set(overlay, {
+        opacity: 1,
+        visibility: "visible"
+    });
 
+    gsap.to(overlay, {
+        opacity: 0,
+        duration: cameFromInternalNav ? 1.3 : 1.5,
+        ease: "power2.out",
+        delay: cameFromInternalNav ? 1 : 1.2,
+        onComplete: () => {
+            overlay.classList.add("hidden");
+        }
+    });
+
+    // ================= MOBILE DROPDOWN (NO TOCADO) =================
     const mobileDropdown = document.querySelector(".mobile-dropdown");
     if (mobileDropdown instanceof HTMLElement) {
         const summary = mobileDropdown.querySelector("summary");
@@ -43,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             mobileDropdown.classList.add("closing");
             document.body.classList.remove("mobile-menu-open");
+
             if (summary) {
                 summary.setAttribute("aria-expanded", "false");
             }
@@ -57,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const syncMobileMenuState = () => {
             const isOpen = mobileDropdown.hasAttribute("open");
             document.body.classList.toggle("mobile-menu-open", isOpen);
+
             if (summary) {
                 summary.setAttribute("aria-expanded", String(isOpen));
             }
@@ -67,9 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (summary) {
             summary.addEventListener("click", (event) => {
-                if (!mobileDropdown.hasAttribute("open")) {
-                    return;
-                }
+                if (!mobileDropdown.hasAttribute("open")) return;
 
                 event.preventDefault();
                 closeMobileMenu();
@@ -78,9 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         mobileDropdown.addEventListener("click", (event) => {
             const targetElement = event.target;
-            if (!(targetElement instanceof Element)) {
-                return;
-            }
+            if (!(targetElement instanceof Element)) return;
 
             if (targetElement.closest(".mobile-dropdown__backdrop")) {
                 closeMobileMenu();
@@ -99,14 +108,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         document.addEventListener("click", (event) => {
-            if (!mobileDropdown.hasAttribute("open")) {
-                return;
-            }
+            if (!mobileDropdown.hasAttribute("open")) return;
 
             const targetElement = event.target;
-            if (!(targetElement instanceof Element)) {
-                return;
-            }
+            if (!(targetElement instanceof Element)) return;
 
             if (!targetElement.closest(".mobile-dropdown")) {
                 closeMobileMenu();
@@ -114,16 +119,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // ================= NAVEGACIÓN (MEJORADO CON GSAP) =================
     const handleNavigation = (event) => {
+
         const targetElement = event.target;
-        if (!(targetElement instanceof Element)) {
-            return;
-        }
+        if (!(targetElement instanceof Element)) return;
 
         const link = targetElement.closest("a[href]");
-        if (!link) {
-            return;
-        }
+        if (!link) return;
 
         if (isLeaving) {
             event.preventDefault();
@@ -134,29 +137,30 @@ document.addEventListener("DOMContentLoaded", () => {
         const target = link.getAttribute("target");
         const hasDownload = link.hasAttribute("download");
 
-        if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) {
-            return;
-        }
-
-        if (target === "_blank" || hasDownload) {
-            return;
-        }
+        if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+        if (target === "_blank" || hasDownload) return;
 
         const nextUrl = new URL(href, window.location.href);
-
-        if (nextUrl.origin !== window.location.origin) {
-            return;
-        }
+        if (nextUrl.origin !== window.location.origin) return;
 
         event.preventDefault();
         isLeaving = true;
-        nextUrl.searchParams.set("_tr", "1");
-        overlay.classList.add("quick");
-        overlay.classList.remove("hidden");
 
-        setTimeout(() => {
-            window.location.href = nextUrl.href;
-        }, exitTime);
+        nextUrl.searchParams.set("_tr", "1");
+
+        overlay.classList.remove("hidden");
+        overlay.classList.add("quick");
+
+        // ================= EXIT ANIMATION =================
+        gsap.to(overlay, {
+            opacity: 1,
+            visibility: "visible",
+            duration: 0.4,
+            ease: "power2.in",
+            onComplete: () => {
+                window.location.href = nextUrl.href;
+            }
+        });
     };
 
     document.addEventListener("click", handleNavigation);
@@ -164,9 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("pageshow", (event) => {
-    if (!event.persisted) {
-        return;
-    }
+    if (!event.persisted) return;
 
     const overlay = document.getElementById("transition-overlay");
     if (overlay) {

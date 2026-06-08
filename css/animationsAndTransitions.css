@@ -1,4 +1,7 @@
-/* OVERLAY */
+/* =========================================================
+   OVERLAY BASE
+========================================================= */
+
 #transition-overlay {
     position: fixed;
     inset: 0;
@@ -6,13 +9,18 @@
         radial-gradient(circle at 50% 35%, rgba(255, 210, 90, 0.12), transparent 50%),
         radial-gradient(circle at 20% 80%, rgba(255, 180, 60, 0.08), transparent 45%),
         #050505;
+
     z-index: 9999;
     pointer-events: none;
+
     display: grid;
     place-items: center;
+
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+    transition: opacity 1.2s cubic-bezier(0.22, 0.61, 0.36, 1),
+                visibility 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 #transition-overlay.hidden {
@@ -20,12 +28,19 @@
     visibility: hidden;
 }
 
+
+/* =========================================================
+   LOADER (SPINNER + TEXT)
+========================================================= */
+
 .loader-stage {
     display: grid;
     place-items: center;
     gap: 14px;
+
     transform: translateY(8px) scale(0.97);
     opacity: 0;
+
     animation: stageIn 0.7s ease forwards;
 }
 
@@ -33,51 +48,72 @@
     animation-duration: 0.3s;
 }
 
+/* ---------- Spinner base ---------- */
+
 .loader-spinner {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    border: 3px solid rgba(255, 215, 0, 0.22);
+
+    border: 3px solid rgba(255, 215, 0, 0.18);
     border-top-color: #ffe07e;
     border-right-color: #fff2ba;
+
     box-shadow:
-        0 0 24px rgba(255, 215, 0, 0.3),
-        inset 0 0 22px rgba(255, 215, 0, 0.12);
+        0 0 35px rgba(255, 215, 0, 0.25),
+        0 0 80px rgba(255, 200, 80, 0.08),
+        inset 0 0 25px rgba(255, 215, 0, 0.10);
+
     position: relative;
-    animation: spin 1.25s linear infinite, pulse 1.8s ease-in-out infinite;
+
+    animation:
+        spin 1.6s linear infinite,
+        pulse 2.4s ease-in-out infinite;
 }
 
+/* spinner inner ring */
 .loader-spinner::after {
     content: "";
     position: absolute;
     inset: 19px;
+
     border-radius: 50%;
     border: 2px solid rgba(255, 215, 0, 0.45);
     border-left-color: transparent;
     border-bottom-color: transparent;
+
     animation: spinReverse 1.8s linear infinite;
 }
 
+/* orbit dot */
 .loader-spinner::before {
     content: "";
     position: absolute;
+
     width: 8px;
     height: 8px;
+
     border-radius: 50%;
     background: #ffe8a3;
+
     top: -4px;
     left: calc(50% - 4px);
+
     box-shadow: 0 0 12px rgba(255, 220, 120, 0.85);
-    animation: orbitDot 1.25s linear infinite;
+
+    animation: orbitDot 2.2s linear infinite;
 }
 
+/* loader text */
 .loader-title {
     color: rgba(255, 236, 182, 0.85);
     font-size: 0.82rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
     text-align: center;
+
     text-shadow: 0 0 12px rgba(255, 215, 0, 0.25);
+
     font-family: 'FuenteTitulo', sans-serif;
 }
 
@@ -85,43 +121,12 @@
     opacity: 0;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
 
-@keyframes spinReverse {
-    to {
-        transform: rotate(-360deg);
-    }
-}
+/* =========================================================
+   ORBITA INDEX (PLANETA TECNOLOGICO)
+========================================================= */
 
-@keyframes orbitDot {
-    to {
-        transform: rotate(360deg) translateY(45px) rotate(-360deg);
-    }
-}
-
-@keyframes pulse {
-    50% {
-        box-shadow:
-            0 0 34px rgba(255, 215, 0, 0.5),
-            inset 0 0 28px rgba(255, 215, 0, 0.2);
-    }
-}
-
-@keyframes stageIn {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* PLANETA ORBITAL MAIN */
-/* ================= ORBITA TECNOLOGICA ================= */
-
-.tech-orbit{
+.tech-orbit {
     position: fixed;
     top: 55%;
     left: 50%;
@@ -134,89 +139,87 @@
     opacity: 0.9;
 }
 
-.orbit-container{
-    width:650px;
-    height:650px;
+.orbit-container {
+    width: 650px;
+    height: 650px;
 }
 
-.orbit{
-    position:absolute;
-    top:50%;
-    left:50%;
-    border:1px solid rgba(255,255,255,.15);
+/* ---------- orbits ---------- */
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
     box-shadow:
-    0 0 12px rgba(255,255,255,.15),
-    inset 0 0 12px rgba(255,255,255,.08);
-    border-radius:50%;
-    transform-style:preserve-3d;
+        0 0 12px rgba(255, 255, 255, 0.15),
+        inset 0 0 12px rgba(255, 255, 255, 0.08);
+
+    border-radius: 50%;
+
+    transform-style: preserve-3d;
 }
 
-.orbit-1{
-    width:220px;
-    height:220px;
-    margin-left:-110px;
-    margin-top:-110px;
-}
+/* tamaños */
+.orbit-1 { width: 220px; height: 220px; margin: -110px; }
+.orbit-2 { width: 300px; height: 300px; margin: -150px; transform: rotateX(65deg); }
+.orbit-3 { width: 360px; height: 360px; margin: -180px; transform: rotateY(75deg); }
+.orbit-4 { width: 430px; height: 430px; margin: -215px; transform: rotateX(35deg); }
+.orbit-5 { width: 500px; height: 500px; margin: -250px; transform: rotateY(45deg); }
+.orbit-6 { width: 560px; height: 560px; margin: -280px; transform: rotateX(80deg); }
+.orbit-7 { width: 620px; height: 620px; margin: -310px; transform: rotateY(20deg); }
 
-.orbit-2{
-    width:300px;
-    height:300px;
-    margin-left:-150px;
-    margin-top:-150px;
-    transform:rotateX(65deg);
-}
+/* núcleo */
+.core {
+    position: absolute;
+    width: 24px;
+    height: 24px;
 
-.orbit-3{
-    width:360px;
-    height:360px;
-    margin-left:-180px;
-    margin-top:-180px;
-    transform:rotateY(75deg);
-}
-.orbit-4{
-    width:430px;
-    height:430px;
-    margin-left:-215px;
-    margin-top:-215px;
-    transform:rotateX(35deg);
-}
+    border-radius: 50%;
+    background: white;
 
-.orbit-5{
-    width:500px;
-    height:500px;
-    margin-left:-250px;
-    margin-top:-250px;
-    transform:rotateY(45deg);
-}
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-.orbit-6{
-    width:560px;
-    height:560px;
-    margin-left:-280px;
-    margin-top:-280px;
-    transform:rotateX(80deg);
-}
-
-.orbit-7{
-    width:620px;
-    height:620px;
-    margin-left:-310px;
-    margin-top:-310px;
-    transform:rotateY(20deg);
-}
-
-
-.core{
-    position:absolute;
-    width:24px;
-    height:24px;
-    border-radius:50%;
-    background:white;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
     box-shadow:
-        0 0 30px rgba(255,255,255,.9),
-        0 0 60px rgba(255,255,255,.7),
-        0 0 120px rgba(255,255,255,.4);
+        0 0 30px rgba(255, 255, 255, 0.9),
+        0 0 60px rgba(255, 255, 255, 0.7),
+        0 0 120px rgba(255, 255, 255, 0.4);
+}
+
+
+/* =========================================================
+   KEYFRAMES (CENTRALIZADOS)
+========================================================= */
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+    to { transform: rotate(-360deg); }
+}
+
+@keyframes orbitDot {
+    to {
+        transform: rotate(360deg) translateY(45px) rotate(-360deg);
+    }
+}
+
+@keyframes pulse {
+    50% {
+        box-shadow:
+            0 0 45px rgba(255, 215, 0, 0.45),
+            inset 0 0 30px rgba(255, 215, 0, 0.18);
+    }
+}
+
+@keyframes stageIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
