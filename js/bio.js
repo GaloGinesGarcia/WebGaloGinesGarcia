@@ -2,6 +2,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 window.addEventListener("load", () => {
 
+    const isMobile = document.documentElement.classList.contains("mobile-lite");
+
     // ================= TITLE (fade normal) =================
     gsap.from(".bio-title", {
         opacity: 0,
@@ -18,20 +20,28 @@ window.addEventListener("load", () => {
         const text = p.innerText;
         p.innerHTML = "";
 
-        // crear spans por letra
         text.split("").forEach((char) => {
+
             const span = document.createElement("span");
 
             // mantener espacios visibles
             span.innerHTML = char === " " ? "&nbsp;" : char;
 
-            span.style.opacity = 0;
+            span.style.opacity = "0";
             span.style.display = "inline-block";
-            span.style.filter = "blur(6px)";
-            span.style.transform = "translateY(10px) scale(0.9)";
+
+            // SOLO PC -> blur + scale
+            if (!isMobile) {
+                span.style.filter = "blur(6px)";
+                span.style.transform = "translateY(10px) scale(0.9)";
+            } else {
+                span.style.transform = "translateY(5px)";
+            }
 
             p.appendChild(span);
+
         });
+
     });
 
     // ================= ANIMACIÓN SECUENCIAL =================
@@ -43,22 +53,33 @@ window.addEventListener("load", () => {
         }
     });
 
-    gsap.utils.toArray(".bio-text").forEach((p) => {
+    paragraphs.forEach((p) => {
 
         const chars = p.querySelectorAll("span");
 
         tl.to(chars, {
+
             opacity: 1,
-            filter: "blur(0px)",
+
+            // En móvil evitamos blur y scale
+            ...(isMobile ? {} : {
+                filter: "blur(0px)",
+                scale: 1
+            }),
+
             y: 0,
-            scale: 1,
-            duration: 1.5,
+
+            duration: isMobile ? 0.7 : 1.5,
             ease: "power2.out",
-            stagger: 0.005
+
+            stagger: isMobile ? 0.0015 : 0.005
+
         });
 
-        // pequeño “pause” entre párrafos
-        tl.to({}, { duration: 0.4 });
+        // pausa entre párrafos
+        tl.to({}, {
+            duration: isMobile ? 0.1 : 0.4
+        });
 
     });
 

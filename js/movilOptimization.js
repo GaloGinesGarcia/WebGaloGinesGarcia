@@ -13,6 +13,12 @@ if (typeof ScrollTrigger !== "undefined") {
 // ================= GLOBAL SPEED =================
 window.ANIMATION_SPEED = isMobile ? 0.7 : 1;
 
+// ================= OPTIMIZACION CLASE BIO =================
+
+window.BIO_STAGGER = isMobile ? 0.005 : 0.02;
+window.BIO_Y = isMobile ? 5 : 20;
+window.BIO_DURATION = isMobile ? 0.2 : 0.5;
+
 // ================= MOBILE CLASS =================
 if (isMobile) {
     document.documentElement.classList.add("mobile-lite");
@@ -23,7 +29,7 @@ window.addEventListener("load", () => {
 
     if (!isMobile) return;
 
-    // 🔥 1. Retrasar orbits para evitar lag inicial
+    // 1. Retrasar orbits para evitar lag inicial
     setTimeout(() => {
 
         document.querySelectorAll(".orbit").forEach((el) => {
