@@ -118,6 +118,7 @@ body.visible {
 main {
     margin-top: 100px; 
     text-align: center;
+    z-index: 2;
 }
 
 p{
@@ -126,6 +127,9 @@ p{
     margin: 7%;
     margin-left: 15%;
     margin-right: 15%;
+}
+section{
+    z-index: 2;
 }
 
 .separator {

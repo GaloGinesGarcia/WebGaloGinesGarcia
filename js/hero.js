@@ -31,6 +31,16 @@ window.addEventListener("load", () => {
 });
 
     // ================= ORBITA DE PUNTOS MAIN =================
+    gsap.to(".tech-orbit", {
+    y: () => window.innerHeight * 0.001, 
+    ease: "none",
+    scrollTrigger: {
+        trigger: "body",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1.2
+    }
+});
     gsap.to(".orbit-1", {
         rotateZ: 360,
         duration: 14,

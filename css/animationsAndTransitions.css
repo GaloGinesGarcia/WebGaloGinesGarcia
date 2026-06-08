@@ -122,17 +122,19 @@
 /* ================= ORBITA TECNOLOGICA ================= */
 
 .tech-orbit{
-    height: 500px;
+    position: fixed;
+    top: 55%;
+    left: 50%;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    transform: translate(-50%, -50%);
+    z-index: 0;
 
-    overflow:hidden;
+    pointer-events: none;
+
+    opacity: 0.9;
 }
 
 .orbit-container{
-    position:relative;
     width:650px;
     height:650px;
 }
