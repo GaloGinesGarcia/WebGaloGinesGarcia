@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
     gsap.from(".bio-title", {
         opacity: 0,
         y: 40,
-        duration: 7,
+        duration: 5,
         ease: "power3.out"
     });
 
@@ -66,7 +66,7 @@ window.addEventListener("load", () => {
 
         // pausa entre párrafos
         tl.to({}, {
-            duration: isMobile ? 0.25 : 0.4
+            duration: isMobile ? 0.4 : 0.4
         });
 
     });
