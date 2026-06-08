@@ -129,4 +129,18 @@ body.mobile-menu-open {
     .mobile-dropdown__panel a:hover {
         background: rgba(255, 255, 255, 0.12);
     }
+
+    /* ================= MOBILE PERFORMANCE MODE ================= */
+
+    .mobile-lite .tech-orbit {
+        opacity: 0.6;
+    }
+
+    .mobile-lite .orbit {
+        box-shadow: none !important;
+    }
+
+    .mobile-lite body::before {
+        display: none;
+}
 }
