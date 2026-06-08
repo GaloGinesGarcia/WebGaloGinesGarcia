@@ -129,6 +129,10 @@ body.mobile-menu-open {
     .mobile-dropdown__panel a:hover {
         background: rgba(255, 255, 255, 0.12);
     }
+    /* ================= IMAGES PERFORMANCE ================= */
+    .linkeding-icon {
+        width: 2%;
+    }
 
     /* ================= MOBILE PERFORMANCE MODE ================= */
 
