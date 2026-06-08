@@ -1,4 +1,8 @@
-﻿/* ================= HEADER ================= */
+﻿/* ================= HTML ================= */
+html {
+  background: #000;
+}
+/* ================= HEADER ================= */
 header {
     position: sticky;
     top: 0; 
@@ -78,33 +82,39 @@ header nav ul li a {
 
 /* Hover de los enlaces */
 header nav ul li a:hover {
-    color: rgb(104, 144, 245);             /* cambia a gris al pasar el ratón */
+    color: rgb(104, 144, 245);             /* cambia a azul al pasar el ratón */
 }
 /* ================= BODY ================= */
 body {
-    background: linear-gradient(135deg, #0f0f0f, #0f0f17, #0b101f);
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    opacity: 1;
-    color: white;
+  background: transparent; /* 👈 FIX CLAVE */
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Gradiente circular en la pagina*/
+/* glow */
+body::before {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08), transparent);
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(80px);
+  z-index: -1;
 }
 
 body.visible {
     opacity: 1;
 }
-/* Gradiente circular en la pagina*/
-body::before {
-    content: "";
-    position: fixed;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(255,255,255,0.08), transparent);
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    filter: blur(80px);
-    z-index: -1;
-}
+
 
 /* ================= MAIN ================= */
 main {
