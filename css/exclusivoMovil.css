@@ -131,7 +131,7 @@ body.mobile-menu-open {
     }
     /* ================= IMAGES PERFORMANCE ================= */
     .linkeding-icon {
-        width: 15% !important;
+        width: 13% !important;
     }
 
     /* ================= MOBILE PERFORMANCE MODE ================= */
@@ -146,5 +146,5 @@ body.mobile-menu-open {
 
     .mobile-lite body::before {
         display: none;
-}
+    }
 }
