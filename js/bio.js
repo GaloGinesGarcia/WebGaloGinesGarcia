@@ -4,7 +4,7 @@ window.addEventListener("load", () => {
 
     const isMobile = document.documentElement.classList.contains("mobile-lite");
 
-    // ================= TITLE (fade normal) =================
+    // ================= TITLE =================
     gsap.from(".bio-title", {
         opacity: 0,
         y: 40,
@@ -12,7 +12,7 @@ window.addEventListener("load", () => {
         ease: "power3.out"
     });
 
-    // ================= SPLIT TEXT A LETRAS =================
+    // ================= SPLIT TEXT =================
     const paragraphs = gsap.utils.toArray(".bio-text");
 
     paragraphs.forEach((p) => {
@@ -24,27 +24,20 @@ window.addEventListener("load", () => {
 
             const span = document.createElement("span");
 
-            // mantener espacios visibles
             span.innerHTML = char === " " ? "&nbsp;" : char;
 
             span.style.opacity = "0";
             span.style.display = "inline-block";
 
-            // SOLO PC -> blur + scale
-            if (!isMobile) {
-                span.style.filter = "blur(6px)";
-                span.style.transform = "translateY(10px) scale(0.9)";
-            } else {
-                span.style.transform = "translateY(5px)";
-            }
+            // 🔥 TODO viene del sistema global
+            span.style.filter = `blur(${window.BIO_BLUR}px)`;
+            span.style.transform = `translateY(${window.BIO_Y}px)`;
 
             p.appendChild(span);
-
         });
-
     });
 
-    // ================= ANIMACIÓN SECUENCIAL =================
+    // ================= ANIMACIÓN =================
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: ".bio-text",
@@ -61,24 +54,19 @@ window.addEventListener("load", () => {
 
             opacity: 1,
 
-            // En móvil evitamos blur y scale
-            ...(isMobile ? {} : {
-                filter: "blur(0px)",
-                scale: 1
-            }),
-
+            filter: "blur(0px)",
+            scale: 1,
             y: 0,
 
-            duration: isMobile ? 0.7 : 1.5,
+            duration: window.BIO_DURATION,
             ease: "power2.out",
-
-            stagger: isMobile ? 0.0015 : 0.005
+            stagger: window.BIO_STAGGER
 
         });
 
         // pausa entre párrafos
         tl.to({}, {
-            duration: isMobile ? 0.1 : 0.4
+            duration: isMobile ? 0.25 : 0.4
         });
 
     });

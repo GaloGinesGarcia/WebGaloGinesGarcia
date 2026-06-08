@@ -11,13 +11,14 @@ if (typeof ScrollTrigger !== "undefined") {
 }
 
 // ================= GLOBAL SPEED =================
-window.ANIMATION_SPEED = isMobile ? 0.7 : 1;
+window.ANIMATION_SPEED = isMobile ? 0.7 : 0.7;
 
 // ================= OPTIMIZACION CLASE BIO =================
 
-window.BIO_STAGGER = isMobile ? 0.005 : 0.02;
+window.BIO_STAGGER = isMobile ? 0.005 : 0.005;
 window.BIO_Y = isMobile ? 5 : 20;
-window.BIO_DURATION = isMobile ? 0.2 : 0.5;
+window.BIO_DURATION = isMobile ? 0.5 : 0.5;
+window.BIO_BLUR = isMobile ? 1 : 6;
 
 // ================= MOBILE CLASS =================
 if (isMobile) {
