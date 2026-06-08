@@ -130,8 +130,11 @@ body.mobile-menu-open {
         background: rgba(255, 255, 255, 0.12);
     }
     /* ================= IMAGES PERFORMANCE ================= */
+    .instagram-icon {
+        width: 50px !important;
+    }
     .linkeding-icon {
-        width: 13% !important;
+        width: 60px !important;
     }
 
     /* ================= MOBILE PERFORMANCE MODE ================= */
