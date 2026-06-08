@@ -1,4 +1,4 @@
-// ================= FICHERO DE ANIMACIONES =================
+// ================= FICHERO DE ANIMACIONES GENERAL =================
 gsap.registerPlugin(ScrollTrigger);
 
 window.addEventListener("load", () => {

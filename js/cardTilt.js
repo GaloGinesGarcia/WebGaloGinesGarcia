@@ -1,3 +1,4 @@
+/* SEGUIMIENTO DE TARJETAS AL CURSOR */ 
 document.querySelectorAll(".cards-grid .card-inner").forEach(card => {
 
     card.addEventListener("mousemove", (e) => {
