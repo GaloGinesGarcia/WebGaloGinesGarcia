@@ -122,41 +122,52 @@ if(orbit){
 
 }
 
+// ================= MAIN TEXT INDEX (SYMMETRIC BEHAVIOR) =================
 
-    // SCROLL HERO
-    gsap.to(".hero", {
-        scrollTrigger: {
-            trigger: ".hero",
-            start: "top top",
-            end: "bottom top",
-            scrub: 1.2
-        },
-        scale: 0.88,
-        opacity: 0.25,
-        y: -60
-    });
+function createSectionAnimation(selector) {
 
-    // ABOUT
-    gsap.from(".about-preview", {
-        scrollTrigger: {
-            trigger: ".about-preview",
-            start: "top 80%"
-        },
+    const el = document.querySelector(selector);
+    if (!el) return;
+
+    // Estado inicial
+    gsap.set(el, {
         opacity: 0,
         y: 80,
-        duration: 1
+        scale: 0.95
     });
 
-    // STACK
-    gsap.from(".stack-preview", {
-        scrollTrigger: {
-            trigger: ".stack-preview",
-            start: "top 80%"
+    gsap.fromTo(el,
+        {
+            opacity: 0,
+            y: 80,
+            scale: 0.95
         },
-        opacity: 0,
-        y: 80,
-        duration: 1
-    });
+        {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 3,
+            ease: "power4.out",
+
+            scrollTrigger: {
+                trigger: el,
+                start: "top 80%",
+
+                // 🔥 comportamiento real ida/vuelta
+                toggleActions: "play reverse play reverse",
+
+                // opcional pero recomendado para consistencia
+                invalidateOnRefresh: true
+            }
+        }
+    );
+}
+
+// aplicar a todas las secciones
+createSectionAnimation(".about-preview");
+createSectionAnimation(".stack-preview");
+createSectionAnimation(".services-preview");
+createSectionAnimation(".contact-preview");
 
     // ================= CARDS ENTRY (IMPORTANTE) =================
 
