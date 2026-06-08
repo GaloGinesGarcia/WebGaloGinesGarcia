@@ -131,7 +131,7 @@ body.mobile-menu-open {
     }
     /* ================= IMAGES PERFORMANCE ================= */
     .linkeding-icon {
-        width: 2%;
+        width: 2% !important;
     }
 
     /* ================= MOBILE PERFORMANCE MODE ================= */
