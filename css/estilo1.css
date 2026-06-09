@@ -116,7 +116,7 @@ body.visible {
 }
 /* ================= MAIN ================= */
 main {
-    margin-top: 100px; 
+    margin-top: 20px; 
     text-align: center;
     z-index: 1;
 }
