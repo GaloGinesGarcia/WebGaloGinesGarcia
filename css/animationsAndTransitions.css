@@ -162,6 +162,24 @@
     transform-style: preserve-3d;
 }
 
+.orbit::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    transform: rotate(0deg) translateX(120px);
+    animation: orbitDot 10s linear infinite;
+}
+
+@keyframes orbitDot {
+    from { transform: rotate(0deg) translateX(120px); }
+    to   { transform: rotate(360deg) translateX(120px); }
+}
+
 /* tamaños */
 .orbit-1 { width: 220px; height: 220px; margin: -110px; }
 .orbit-2 { width: 300px; height: 300px; margin: -150px; transform: rotateX(65deg); }
@@ -170,6 +188,25 @@
 .orbit-5 { width: 500px; height: 500px; margin: -250px; transform: rotateY(45deg); }
 .orbit-6 { width: 560px; height: 560px; margin: -280px; transform: rotateX(80deg); }
 .orbit-7 { width: 620px; height: 620px; margin: -310px; transform: rotateY(20deg); }
+
+/* planetas */
+.planet {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+.p1 { top: 0%; left: 50%; }
+.p2 { top: 50%; left: 100%; }
+.p3 { top: 100%; left: 50%; }
+.p4 { top: 50%; left: 0%; }
+.p5 { top: 25%; left: 75%; }
 
 /* núcleo */
 .core {
