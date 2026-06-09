@@ -30,11 +30,27 @@ document.addEventListener("DOMContentLoaded", () => {
         visibility: "visible"
     });
 
+    let heroTriggered = false;
+
     gsap.to(overlay, {
         opacity: 0,
         duration: cameFromInternalNav ? 1.3 : 1.5,
         ease: "power2.out",
         delay: cameFromInternalNav ? 1 : 1.2,
+
+        onUpdate: function () {
+
+            const progress = this.progress();
+
+            // dispara 1.3s antes del final de la transicion
+            const triggerPoint = 1 - (1.3 / this.duration());
+
+            if (!heroTriggered && progress >= triggerPoint) {
+                heroTriggered = true;
+                window.dispatchEvent(new Event("transitionDone"));
+            }
+        },
+
         onComplete: () => {
             overlay.classList.add("hidden");
         }
