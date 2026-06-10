@@ -132,6 +132,51 @@ section{
     z-index: 2;
 }
 
+form{
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 18px;
+    padding: 1.5rem;
+    color: white;
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.25),
+        inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+form:hover {
+    border-color:
+        white;
+
+    box-shadow:
+        0 20px 40px black,
+        0 0 40px rgb(47, 113, 255);
+}
+
+.donaciones{
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 18px;
+    margin-top: 40px;
+    padding: 1.5rem;
+    color: white;
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.25),
+        inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.donaciones:hover {
+    border-color:
+        white;
+
+    box-shadow:
+        0 20px 40px black,
+        0 0 40px rgb(47, 113, 255);
+}
+
 .separator {
   width: calc(100% - 40px); /* margen lateral */
   margin: 40px auto; /* espacio arriba/abajo y centrado */
