@@ -1,4 +1,5 @@
-/* SEGUIMIENTO DE TARJETAS AL CURSOR */ 
+/* SEGUIMIENTO DE TARJETAS TECNOLÓGICAS AL CURSOR */ 
+/* EN HERO TAMBIEN HAY COSAS */ 
 document.querySelectorAll(".cards-grid .card-inner").forEach(card => {
 
     card.addEventListener("mousemove", (e) => {

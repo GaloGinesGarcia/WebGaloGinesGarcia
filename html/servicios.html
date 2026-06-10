@@ -23,7 +23,12 @@
 <body>
     <header>
         <div>
-            <h1><a href="../index.html" style="text-decoration: none; color: inherit;">Galo Ginés García</a></h1>
+            <h1>
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    Galo Ginés García
+                </a>
+            </h1>
+
             <nav>
                 <ul>
                     <li><a href="../index.html">Profesión</a></li>
@@ -33,6 +38,7 @@
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
+
             <details class="mobile-dropdown">
                 <summary aria-label="Abrir menu movil">
                     <span></span>
@@ -50,75 +56,82 @@
             </details>
         </div>
     </header>
+
     <main>
         <h3 class="text-center mb-3 text-white">Servicios digitales</h3>
-        <p class="services-subtitle text-center">Desarrollo web, aplicaciones multiplataforma y soporte técnico.</p>
-    
-
+        <p class="services-subtitle text-center">
+            Desarrollo web, aplicaciones multiplataforma y soporte técnico.
+        </p>
 
         <div class="servicios-opciones">
-            <article class="servicio-card">
+
+            <article class="servicio-card s1">
                 <h4>Desarrollo web</h4>
-                <details class="servicio-dropdown">
-                    <summary>Ver opciones</summary>
-                    <ul>
-                        <li>Landing page</li>
-                        <li>Web corporativa</li>
-                        <li>Tienda online</li>
-                    </ul>
-                    <a href="contacto.html" style="text-decoration: none;"><button type="button" class="btn-pedir">Solicitar proyecto →</button></a>
-                </details>
+
+                <button class="btn-ver-opciones" data-service="web">
+                    Ver opciones
+                </button>
             </article>
 
-            <article class="servicio-card">
+            <article class="servicio-card s2">
                 <h4>Aplicaciones</h4>
-                <details class="servicio-dropdown">
-                    <summary>Ver opciones</summary>
-                    <ul>
-                        <li>App Android</li>
-                        <li>App iOS</li>
-                        <li>App multiplataforma</li>
-                    </ul>
-                    <a href="contacto.html" style="text-decoration: none;"><button type="button" class="btn-pedir">Solicitar proyecto →</button></a>
-                </details>
+
+                <button class="btn-ver-opciones" data-service="apps">
+                    Ver opciones
+                </button>
             </article>
 
-            <article class="servicio-card">
+            <article class="servicio-card s3">
                 <h4>Colaboración</h4>
-                <details class="servicio-dropdown">
-                    <summary>Ver opciones</summary>
-                    <ul>
-                        <li>Soporte tecnico</li>
-                        <li>Mantenimiento</li>
-                        <li>Consultoria</li>
-                    </ul>
-                    <a href="contacto.html" style="text-decoration: none;"><button type="button" class="btn-pedir">Solicitar proyecto →</button></a>
-                </details>
+
+                <button class="btn-ver-opciones" data-service="colaboracion">
+                    Ver opciones
+                </button>
             </article>
+
         </div>
-        
-    
     </main>
+
     <footer>
         <div>
             <div>
-                <a href="https://www.instagram.com/gaaliitoo_.gg/"  target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                <img src="../assets/images/instagramImg.png" class="social-icon instagram-icon">
+                <a href="https://www.instagram.com/gaaliitoo_.gg/" target="_blank" rel="noopener noreferrer">
+                    <img src="../assets/images/instagramImg.png" class="social-icon instagram-icon">
                 </a>
-                <a href="https://www.linkedin.com/in/galo-gin%C3%A9s-garc%C3%ADa-638410287/"  target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                <img src="../assets/images/linkedinImg.png" class="social-icon linkeding-icon">
+
+                <a href="https://www.linkedin.com/in/galo-gin%C3%A9s-garc%C3%ADa-638410287/" target="_blank" rel="noopener noreferrer">
+                    <img src="../assets/images/linkedinImg.png" class="social-icon linkeding-icon">
                 </a>
             </div>
+
             <p class="mb-0">© 2026 Mi Web. Todos los derechos reservados.</p>
         </div>
     </footer>
-<!-- OVERLAY TRANSICIÓN -->
-<div id="transition-overlay"></div>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="../js/transicion.js?v=2"></script>
-<script src="../js/servicios.js"></script>
+
+    <!-- OVERLAY TRANSICIÓN -->
+    <div id="transition-overlay"></div>
+
+    <!-- MODAL SERVICIOS (PRO) -->
+    <div class="service-modal" id="serviceModal">
+        <div class="service-modal__backdrop"></div>
+
+        <div class="service-modal__panel">
+            <h3 id="modalTitle">Servicio</h3>
+
+            <ul id="modalList"></ul>
+
+            <a href="contacto.html">
+                <button class="btn-pedir">Solicitar proyecto →</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <script src="../js/transicion.js?v=2"></script>
+    <script src="../js/servicios.js"></script>
+
 </body>
 </html>
-
-

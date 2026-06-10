@@ -114,7 +114,7 @@ const runHeroAnimation = () => {
     createSectionAnimation(".services-preview");
     createSectionAnimation(".contact-preview");
 
-    // CARDS
+    // CARDS TECNOLOGICAS
     gsap.set(".cards-grid .card-inner", {
         opacity: 0,
         y: 120,
@@ -137,6 +137,29 @@ const runHeroAnimation = () => {
         duration: 0.9,
         ease: "power4.out",
         stagger: 0.12
+    });
+
+    // CARDS SERVICIOS
+    gsap.set(".servicio-card", {
+    opacity: 0,
+    y: 80,
+    rotateX: 15,
+    scale: 0.95
+    });
+
+    gsap.to(".servicio-card", {
+        scrollTrigger: {
+            trigger: ".servicios-opciones",   // 👈 IMPORTANTE (no cada card)
+            start: "top 80%",
+            toggleActions: "play none none none"
+        },
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        scale: 1,
+        duration: 0.9,
+        ease: "power4.out",
+        stagger: 0.15
     });
 
     ScrollTrigger.refresh();

@@ -1,34 +1,6 @@
-gsap.registerPlugin();
-
-gsap.to(".servicio-card", {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            rotateX: 0,
-            filter: "blur(0px)",
-
-            duration: 1.1,
-            ease: "power4.out",
-            stagger: 0.22,
-            delay: 0.25,
-
-            // 👇 AQUÍ VA EL GLOW FINAL
-            boxShadow: "0 20px 40px rgba(0,0,0,.35), 0 0 25px rgba(255,255,255,.08)",
-
-            // 👇 ESTO TAMBIÉN VA AQUÍ
-            onStart: () => {
-                document.querySelectorAll(".servicio-card").forEach(card => {
-                    card.style.boxShadow = "0 0 0 rgba(0,0,0,0)";
-                });
-            }
-});
-const cards = document.querySelectorAll(".servicio-card");
-
-cards.forEach(card => {
-
-    let isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-    if (isMobile) return; //!importante: desactiva 3D en móvil
+/* SEGUIMIENTO DE TARJETAS TECNOLÓGICAS AL CURSOR */ 
+/* EN HERO TAMBIEN HAY COSAS */  
+document.querySelectorAll(".servicio-card").forEach(card => {
 
     card.addEventListener("mousemove", (e) => {
 
@@ -37,36 +9,131 @@ cards.forEach(card => {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        const rotateY = ((x / rect.width) - 0.2) * 20;
-        const rotateX = ((y / rect.height) - 0.2) * -20;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
 
-        gsap.to(card, {
-            rotateX,
-            rotateY,
-            scale: 1.03,
-            duration: 0.1,
-            ease: "power2.out",
-            transformPerspective: 800,
-            transformOrigin: "center"
-        });
+        const rotateY = ((x - centerX) / centerX) * 12;
+        const rotateX = -((y - centerY) / centerY) * 12;
 
-        const xPercent = (x / rect.width) * 100;
-        const yPercent = (y / rect.height) * 100;
+        card.style.transform =
+            `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
-        card.style.setProperty("--x", `${xPercent}%`);
-        card.style.setProperty("--y", `${yPercent}%`);
+        card.style.setProperty("--mouse-x", `${x}px`);
+        card.style.setProperty("--mouse-y", `${y}px`);
     });
 
     card.addEventListener("mouseleave", () => {
+        card.style.transform =
+            "perspective(1200px) rotateX(0deg) rotateY(0deg)";
+    });
 
-        gsap.to(card, {
-            rotateX: 0,
-            rotateY: 0,
+    
+});
+
+// 2. ENTRADA SECUENCIAL (UNO DETRÁS DE OTRO)
+window.addEventListener("transitionDone", () => {
+
+    const cards = document.querySelectorAll(".servicio-card");
+
+    // estado inicial (por seguridad)
+    gsap.set(cards, {
+        opacity: 0,
+        y: 80,
+        rotateX: 15,
+        scale: 0.95
+    });
+
+    const tl = gsap.timeline({
+        defaults: { ease: "power4.out" }
+    });
+
+    tl.to(cards[0], {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        scale: 1,
+        duration: 0.6
+    })
+
+    .to(cards[1], {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        scale: 1,
+        duration: 0.6
+    })
+
+    .to(cards[2], {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        scale: 1,
+        duration: 0.6
+    });
+
+});
+
+const modal = document.getElementById("serviceModal");
+const modalPanel = document.querySelector(".service-modal__panel");
+const modalTitle = document.getElementById("modalTitle");
+const modalList = document.getElementById("modalList");
+
+const data = {
+    web: {
+        title: "Desarrollo Web",
+        items: ["Landing page", "Web corporativa", "Tienda online"]
+    },
+    apps: {
+        title: "Aplicaciones",
+        items: ["App Android", "App iOS", "App multiplataforma"]
+    },
+    colaboracion: {
+        title: "Colaboración",
+        items: ["Soporte técnico", "Mantenimiento", "Consultoría"]
+    }
+};
+
+// abrir modal
+document.querySelectorAll(".btn-ver-opciones").forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        const key = btn.dataset.service;
+        const service = data[key];
+
+        modalTitle.textContent = service.title;
+
+        modalList.innerHTML = "";
+        service.items.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            modalList.appendChild(li);
+        });
+
+        modal.classList.add("active");
+
+        gsap.to(modalPanel, {
+            opacity: 1,
             scale: 1,
-            duration: 0.6,
+            duration: 0.4,
             ease: "power3.out"
         });
 
+    });
+
+});
+
+// cerrar modal
+document.querySelector(".service-modal__backdrop").addEventListener("click", () => {
+
+    gsap.to(modalPanel, {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.3,
+        ease: "power2.in",
+        onComplete: () => {
+            modal.classList.remove("active");
+        }
     });
 
 });
