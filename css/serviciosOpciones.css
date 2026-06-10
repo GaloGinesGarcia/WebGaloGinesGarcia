@@ -7,6 +7,13 @@
     gap: 18px;
 }
 
+.services-subtitle{
+    color: rgba(255,255,255,.65);
+    font-size: 1rem;
+    letter-spacing: .5px;
+    margin-bottom: 45px;
+}
+
 .servicio-card {
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -14,6 +21,49 @@
     padding: 20px 16px;
     color: white;
     text-align: left;
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+
+    transform-style: preserve-3d;
+    will-change: transform;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(80px) scale(0.92) rotateX(8deg);
+    filter: blur(10px);
+    box-shadow: 0 0 0 rgba(253, 253, 253, 0.35);
+}
+
+.servicio-card:hover {
+
+
+    border-color:
+        rgba(255,255,255,.35);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.35),
+        0 0 20px rgba(255,255,255,.08);
+}
+
+.servicio-card::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(
+        circle at var(--x, 50%) var(--y, 50%),
+        rgba(255, 255, 255, 0.18),
+        rgba(34, 164, 71, 0.08),
+        transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.servicio-card:hover::before {
+    opacity: 1;
 }
 
 .servicio-card h4 {
@@ -38,16 +88,27 @@
 
 .btn-pedir {
     width: 100%;
-    border: 0;
-    border-radius: 8px;
-    padding: 10px 12px;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
     color: white;
-    background: #22a447;
+    background:
+        linear-gradient(
+            135deg,
+            #22a447,
+            #2bcf5a
+        );
     font-weight: 700;
+    letter-spacing: .4px;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
 }
 
 .btn-pedir:hover {
-    background: #1c883b;
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(43,207,90,.45);
+        
 }
