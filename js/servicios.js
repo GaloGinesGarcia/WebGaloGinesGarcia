@@ -124,10 +124,27 @@ document.querySelectorAll(".btn-ver-opciones").forEach(btn => {
 
 });
 
-// cerrar modal
+// cerrar modal fuera del panel
 document.querySelector(".service-modal__backdrop").addEventListener("click", () => {
 
     gsap.to(modalPanel, {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.3,
+        ease: "power2.in",
+        onComplete: () => {
+            modal.classList.remove("active");
+        }
+    });
+
+});
+// cerrar modal con botón
+document.querySelector(".modal-close").addEventListener("click", () => {
+
+    const modal = document.getElementById("serviceModal");
+    const panel = document.querySelector(".service-modal__panel");
+
+    gsap.to(panel, {
         opacity: 0,
         scale: 0.8,
         duration: 0.3,
