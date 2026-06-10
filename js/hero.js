@@ -1,3 +1,6 @@
+//TODO Dejar esta panatalla como inedex.js solo para las orbitas, 
+//TODO simbolo y sus textos con animaciones, lo demás remover a sus respectivos archivos (cards, servicios, secciones, etc) 
+//TODO y que cada uno se encargue de su animación  HAY COSAS DE OTRAS PANTALLAS MEZCLADAS.
 gsap.registerPlugin(ScrollTrigger);
 
 const runHeroAnimation = () => {
@@ -149,7 +152,7 @@ const runHeroAnimation = () => {
 
     gsap.to(".servicio-card", {
         scrollTrigger: {
-            trigger: ".servicios-opciones",   // 👈 IMPORTANTE (no cada card)
+            trigger: ".servicios-opciones",   
             start: "top 80%",
             toggleActions: "play none none none"
         },

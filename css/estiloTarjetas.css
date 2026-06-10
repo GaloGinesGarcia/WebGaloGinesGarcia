@@ -28,7 +28,9 @@
     overflow: hidden;
 }
 
-/* BRILLO */
+/* BRILLO DEL MOUSE DESACTIVADO (NO ME GUSTA) */
+/* ESTE ES EL BRILLO QUE SE VE AL PASAR EL MOUSE, SE POSICIONA CON JS EN BASE A LA POSICION DEL CURSOR DENTRO DE LA CARD */
+/*
 .cards-grid .card-inner::after {
     content: "";
     position: absolute;
@@ -43,11 +45,10 @@
     transition: opacity 0.2s ease;
     z-index: 2;
 }
-
+*/
 .cards-grid .card-inner:hover::after {
     opacity: 1;
 }
-
 /* FACES */
 .cards-grid .card .face {
     position: absolute;
