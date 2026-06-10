@@ -1,5 +1,5 @@
 /* ================= MEDIA QUERIES PARA RESPONSIVE ================= */
-@media (max-width: 768px) {
+@media (max-width: 780px) {
     
 
     header h1 {
@@ -22,10 +22,6 @@
         grid-template-columns: 1fr;
         width: min(92%, 430px);
         gap: 14px;
-    }
-
-    .servicio-card {
-        padding: 16px 14px;
     }
 }
 

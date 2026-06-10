@@ -1,7 +1,8 @@
 /* SEGUIMIENTO DE TARJETAS TECNOLÓGICAS AL CURSOR */ 
 /* EN HERO TAMBIEN HAY COSAS */ 
+const isMobile = window.matchMedia("(max-width: 480px)").matches; // Si es movil desactiva la función de mover tarjetas
 document.querySelectorAll(".cards-grid .card-inner").forEach(card => {
-
+    if (isMobile) return;
     card.addEventListener("mousemove", (e) => {
 
         const rect = card.getBoundingClientRect();

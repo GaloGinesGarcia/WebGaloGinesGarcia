@@ -1,7 +1,8 @@
 /* SEGUIMIENTO DE TARJETAS TECNOLÓGICAS AL CURSOR */ 
 /* EN HERO TAMBIEN HAY COSAS */  
+const isMobile = window.matchMedia("(max-width: 780px)").matches;
 document.querySelectorAll(".servicio-card").forEach(card => {
-
+    if (isMobile) return;
     card.addEventListener("mousemove", (e) => {
 
         const rect = card.getBoundingClientRect();
