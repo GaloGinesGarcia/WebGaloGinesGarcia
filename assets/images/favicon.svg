@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+
+  <defs>
+    <!-- Gradiente neon -->
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+
+    <!-- Glow -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- SIN FONDO (transparente) -->
+
+  <!-- opcional glass soft layer -->
+  <rect width="128" height="128" rx="28"
+        fill="rgba(255,255,255,0.04)"/>
+
+  <!-- TEXTO GG -->
+  <text x="50%" y="55%"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        font-size="70"
+        font-family="Arial, sans-serif"
+        font-weight="bold"
+        fill="url(#neon)"
+        filter="url(#glow)"
+        letter-spacing="2">
+
+    GG
+  </text>
+
+</svg>
