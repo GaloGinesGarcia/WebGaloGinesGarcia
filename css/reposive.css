@@ -107,6 +107,11 @@
         padding: 48px 10px;
     }
 
+    /* ######## REFERENCIA: SEPARACION DE BLOQUES EN MOVIL ######## */
+    .panel + .panel {
+        margin-top: 200px;
+    }
+
     .section-title {
         margin-bottom: 8px;
     }

@@ -502,6 +502,11 @@ p {
     will-change: transform, opacity;
 }
 
+/* ######## REFERENCIA: SEPARACION SUAVE ENTRE BLOQUES DE LA HOME ######## */
+.panel + .panel {
+    margin-top: 200px;
+}
+
 .section-kicker {
     margin-bottom: 8px;
 

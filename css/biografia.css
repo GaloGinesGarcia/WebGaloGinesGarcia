@@ -1,0 +1,754 @@
+/* ######## REFERENCIA: CONFIGURACION GENERAL BIOGRAFIA ######### */
+.bio-page {
+    --bio-blue: 103, 163, 255;
+    --bio-violet: 164, 112, 255;
+    --bio-gold: 255, 198, 75;
+    --bio-green: 88, 224, 164;
+}
+
+
+/* ######## REFERENCIA: RESUMEN PRINCIPAL ######## */
+.bio-overview {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(240px, 0.55fr);
+    gap: 20px;
+
+    width: min(100%, 920px);
+    margin: 0 auto;
+}
+
+.bio-overview__card,
+.bio-overview__signal {
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid rgba(186, 213, 255, 0.18);
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            125deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(255, 255, 255, 0.02) 34%,
+            transparent 58%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(22, 39, 70, 0.72),
+            rgba(2, 6, 14, 0.90)
+        );
+
+    box-shadow:
+        0 20px 58px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+
+    backdrop-filter: blur(18px) saturate(125%);
+    -webkit-backdrop-filter: blur(18px) saturate(125%);
+}
+
+.bio-overview__card {
+    padding: clamp(26px, 4vw, 42px);
+}
+
+.bio-overview__card::after,
+.bio-overview__signal::after {
+    content: "";
+    position: absolute;
+    top: -45%;
+    left: -18%;
+
+    width: 74%;
+    height: 98%;
+
+    border-radius: 50%;
+    pointer-events: none;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.18),
+        rgba(255, 255, 255, 0.03) 50%,
+        transparent 74%
+    );
+
+    transform: rotate(-16deg);
+}
+
+.bio-overview__eyebrow,
+.bio-block__eyebrow,
+.bio-cv__eyebrow {
+    margin: 0 0 10px;
+
+    color: var(--primary-strong);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.bio-overview__card h2 {
+    position: relative;
+    z-index: 1;
+
+    max-width: 700px;
+    margin: 0 0 16px;
+
+    color: #ffffff;
+    font-size: clamp(1.7rem, 4vw, 2.55rem);
+    line-height: 1.14;
+}
+
+.bio-overview__card p:last-child {
+    position: relative;
+    z-index: 1;
+
+    max-width: 680px;
+
+    color: var(--text-muted);
+    line-height: 1.75;
+}
+
+.bio-overview__signal {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    min-height: 100%;
+    padding: 28px;
+    isolation: isolate;
+}
+
+.bio-overview__signal::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    width: 90px;
+    aspect-ratio: 1;
+
+    border: 1px solid rgba(173, 207, 255, 0.28);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 34px rgba(84, 151, 255, 0.16),
+        inset 0 0 26px rgba(85, 150, 255, 0.10);
+}
+
+.bio-overview__signal-label,
+.bio-overview__signal strong,
+.bio-overview__signal p {
+    position: relative;
+    z-index: 1;
+}
+
+.bio-overview__signal-label {
+    margin-bottom: 8px;
+
+    color: rgba(229, 241, 255, 0.58);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.bio-overview__signal strong {
+    margin-bottom: 10px;
+
+    color: #ffffff;
+    font-size: clamp(1.55rem, 3vw, 2.05rem);
+    line-height: 1.04;
+}
+
+.bio-overview__signal p {
+    color: rgba(230, 241, 255, 0.62);
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+
+/* ######## REFERENCIA: BLOQUES GENERALES ######## */
+.bio-block {
+    width: min(100%, 920px);
+    margin: clamp(68px, 10vw, 108px) auto 0;
+}
+
+.bio-block__heading {
+    max-width: 720px;
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+.bio-block__heading h2 {
+    margin: 0 0 12px;
+
+    color: #ffffff;
+    font-size: clamp(1.85rem, 4vw, 2.8rem);
+    line-height: 1.1;
+}
+
+.bio-block__heading p:last-child {
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+
+/* ######## REFERENCIA: TRAYECTORIA ACADEMICA ######## */
+.bio-timeline {
+    position: relative;
+
+    display: grid;
+    gap: 18px;
+
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 0 0 54px;
+
+    list-style: none;
+}
+
+.bio-timeline::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 18px;
+
+    width: 1px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(var(--bio-blue), 0.08),
+        rgba(var(--bio-blue), 0.72) 18%,
+        rgba(var(--bio-gold), 0.66) 54%,
+        rgba(var(--bio-green), 0.44) 100%
+    );
+
+    box-shadow: 0 0 16px rgba(var(--bio-blue), 0.24);
+}
+
+.bio-timeline__item {
+    --timeline-rgb: var(--bio-blue);
+
+    position: relative;
+}
+
+.bio-timeline__item--mines {
+    --timeline-rgb: var(--bio-gold);
+}
+
+.bio-timeline__item--software {
+    --timeline-rgb: var(--bio-green);
+}
+
+.bio-timeline__index {
+    position: absolute;
+    top: 28px;
+    right: calc(100% + 16px);
+
+    display: grid;
+    width: 38px;
+    aspect-ratio: 1;
+    place-items: center;
+
+    border: 1px solid rgba(var(--timeline-rgb), 0.70);
+    border-radius: 50%;
+
+    color: #ffffff;
+    background: rgba(3, 8, 17, 0.96);
+
+    box-shadow:
+        0 0 0 5px rgba(2, 5, 12, 0.86),
+        0 0 20px rgba(var(--timeline-rgb), 0.30);
+
+    font-size: 0.73rem;
+    font-weight: 700;
+}
+
+.bio-timeline__card {
+    position: relative;
+    overflow: hidden;
+
+    padding: 28px 28px 26px;
+
+    border: 1px solid rgba(var(--timeline-rgb), 0.28);
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at 92% 8%,
+            rgba(var(--timeline-rgb), 0.24),
+            transparent 42%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(20, 33, 57, 0.74),
+            rgba(2, 6, 14, 0.90)
+        );
+
+    box-shadow:
+        0 18px 46px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    transition:
+        border-color 0.28s ease,
+        transform 0.28s ease,
+        box-shadow 0.28s ease;
+}
+
+.bio-timeline__card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 26px;
+
+    width: 56px;
+    height: 2px;
+
+    border-radius: 999px;
+    background: rgba(var(--timeline-rgb), 0.96);
+
+    box-shadow: 0 0 14px rgba(var(--timeline-rgb), 0.64);
+}
+
+.bio-timeline__card:hover {
+    border-color: rgba(var(--timeline-rgb), 0.60);
+
+    box-shadow:
+        0 22px 58px rgba(0, 0, 0, 0.32),
+        0 0 30px rgba(var(--timeline-rgb), 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+
+    transform: translateY(-4px);
+}
+
+.bio-timeline__label {
+    margin: 0 0 8px;
+
+    color: rgba(var(--timeline-rgb), 0.96);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.bio-timeline__card h3 {
+    margin: 0 0 10px;
+
+    color: #ffffff;
+    font-size: clamp(1.3rem, 3vw, 1.65rem);
+}
+
+.bio-timeline__card p:last-child {
+    color: rgba(234, 242, 255, 0.72);
+    line-height: 1.68;
+}
+
+
+/* ######## REFERENCIA: OBJETIVOS ######## */
+.bio-objectives {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.bio-objective {
+    --objective-rgb: var(--bio-blue);
+
+    position: relative;
+    overflow: hidden;
+
+    min-height: 238px;
+    padding: 26px 22px;
+
+    border: 1px solid rgba(var(--objective-rgb), 0.22);
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at 90% 12%,
+            rgba(var(--objective-rgb), 0.22),
+            transparent 44%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(19, 34, 61, 0.78),
+            rgba(2, 6, 14, 0.90)
+        );
+
+    box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    transition:
+        border-color 0.28s ease,
+        transform 0.28s ease,
+        box-shadow 0.28s ease;
+}
+
+.bio-objective:nth-child(2) {
+    --objective-rgb: var(--bio-violet);
+}
+
+.bio-objective:nth-child(3) {
+    --objective-rgb: var(--bio-green);
+}
+
+.bio-objective::after {
+    content: "";
+    position: absolute;
+    right: -34px;
+    bottom: -42px;
+
+    width: 130px;
+    aspect-ratio: 1;
+
+    border: 1px solid rgba(var(--objective-rgb), 0.20);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 34px rgba(var(--objective-rgb), 0.14),
+        inset 0 0 24px rgba(var(--objective-rgb), 0.08);
+}
+
+.bio-objective:hover {
+    border-color: rgba(var(--objective-rgb), 0.60);
+
+    box-shadow:
+        0 24px 56px rgba(0, 0, 0, 0.32),
+        0 0 28px rgba(var(--objective-rgb), 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+
+    transform: translateY(-5px);
+}
+
+.bio-objective__number {
+    position: relative;
+    z-index: 1;
+
+    display: inline-block;
+    margin-bottom: 34px;
+
+    color: rgba(var(--objective-rgb), 0.96);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+
+    text-shadow: 0 0 15px rgba(var(--objective-rgb), 0.46);
+}
+
+.bio-objective h3,
+.bio-objective p {
+    position: relative;
+    z-index: 1;
+}
+
+.bio-objective h3 {
+    margin: 0 0 10px;
+
+    color: #ffffff;
+    font-size: 1.28rem;
+    line-height: 1.25;
+}
+
+.bio-objective p {
+    color: var(--text-muted);
+    font-size: 0.94rem;
+    line-height: 1.65;
+}
+
+
+/* ######## REFERENCIA: SECTORES DE INTERES ######## */
+.bio-sectors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.bio-sector {
+    position: relative;
+
+    padding: 14px 18px;
+
+    border: 1px solid rgba(178, 211, 255, 0.20);
+    border-radius: 999px;
+
+    color: rgba(244, 248, 255, 0.94);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(121, 172, 255, 0.15),
+            rgba(255, 255, 255, 0.03)
+        );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.10),
+        0 10px 24px rgba(0, 0, 0, 0.14);
+
+    font-size: 0.94rem;
+    font-weight: 600;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.bio-sector::before {
+    content: "";
+    display: inline-block;
+
+    width: 7px;
+    height: 7px;
+    margin-right: 9px;
+
+    border-radius: 50%;
+    background: var(--primary-strong);
+
+    box-shadow: 0 0 12px rgba(135, 184, 255, 0.72);
+    vertical-align: 1px;
+}
+
+.bio-sector:nth-child(2)::before,
+.bio-sector:nth-child(5)::before {
+    background: #7ee9a6;
+    box-shadow: 0 0 12px rgba(104, 228, 148, 0.72);
+}
+
+.bio-sector:nth-child(3)::before,
+.bio-sector:nth-child(6)::before {
+    background: #d3adff;
+    box-shadow: 0 0 12px rgba(191, 137, 255, 0.72);
+}
+
+.bio-sector:nth-child(4)::before {
+    background: #ffd97d;
+    box-shadow: 0 0 12px rgba(255, 204, 93, 0.70);
+}
+
+.bio-sector:hover {
+    border-color: rgba(195, 221, 255, 0.52);
+    background: rgba(87, 150, 255, 0.18);
+
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+
+/* ######## REFERENCIA: BLOQUE FINAL CV ######## */
+.bio-cv {
+    position: relative;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: center;
+
+    width: min(100%, 920px);
+    margin: clamp(76px, 11vw, 120px) auto 0;
+    padding: clamp(28px, 5vw, 48px);
+
+    border: 1px solid rgba(198, 220, 255, 0.32);
+    border-radius: 26px;
+
+    background:
+        radial-gradient(
+            circle at 90% 12%,
+            rgba(107, 166, 255, 0.30),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 8% 100%,
+            rgba(135, 100, 255, 0.18),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(22, 45, 88, 0.86),
+            rgba(2, 7, 17, 0.94)
+        );
+
+    box-shadow:
+        0 26px 86px rgba(0, 0, 0, 0.38),
+        0 0 54px rgba(81, 148, 255, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.bio-cv::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -42px;
+
+    width: 205px;
+    aspect-ratio: 1;
+
+    border: 1px solid rgba(219, 235, 255, 0.24);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 42px rgba(121, 174, 255, 0.16),
+        inset 0 0 36px rgba(114, 168, 255, 0.11);
+}
+
+.bio-cv__content,
+.bio-cv__button,
+.bio-cv small {
+    position: relative;
+    z-index: 1;
+}
+
+.bio-cv__content h2 {
+    max-width: 640px;
+    margin: 0 0 12px;
+
+    color: #ffffff;
+    font-size: clamp(1.72rem, 4vw, 2.5rem);
+    line-height: 1.12;
+}
+
+.bio-cv__content p:last-child {
+    max-width: 620px;
+
+    color: rgba(234, 243, 255, 0.74);
+    line-height: 1.68;
+}
+
+.bio-cv__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-width: 202px;
+    min-height: 54px;
+    padding: 0 22px;
+
+    border: 1px solid rgba(228, 239, 255, 0.62);
+    border-radius: 14px;
+
+    color: #07111f;
+    background: linear-gradient(135deg, #ffffff, #b9d5ff);
+
+    box-shadow:
+        0 14px 32px rgba(80, 151, 255, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.96);
+
+    font-weight: 800;
+    text-decoration: none;
+
+    transition:
+        box-shadow 0.26s ease,
+        filter 0.26s ease,
+        transform 0.26s ease;
+}
+
+.bio-cv__button span {
+    font-size: 1.18rem;
+    line-height: 1;
+}
+
+.bio-cv__button:hover,
+.bio-cv__button:focus-visible {
+    filter: brightness(1.06);
+
+    box-shadow:
+        0 18px 42px rgba(80, 151, 255, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.96);
+
+    transform: translateY(-3px);
+}
+
+.bio-cv__button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 5px;
+}
+
+.bio-cv small {
+    grid-column: 1 / -1;
+
+    color: rgba(221, 235, 255, 0.54);
+    font-size: 0.76rem;
+    letter-spacing: 0.05em;
+}
+
+
+/* ######## REFERENCIA: RESPONSIVE ######## */
+@media (max-width: 760px) {
+    .bio-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .bio-overview__signal {
+        min-height: 220px;
+    }
+
+    .bio-objectives {
+        grid-template-columns: 1fr;
+    }
+
+    .bio-objective {
+        min-height: 210px;
+    }
+
+    .bio-cv {
+        grid-template-columns: 1fr;
+    }
+
+    .bio-cv__button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 560px) {
+    .bio-overview__card,
+    .bio-overview__signal {
+        border-radius: 20px;
+    }
+
+    .bio-timeline {
+        gap: 14px;
+        padding-left: 44px;
+    }
+
+    .bio-timeline::before {
+        left: 14px;
+    }
+
+    .bio-timeline__index {
+        top: 23px;
+        right: calc(100% + 11px);
+
+        width: 32px;
+
+        font-size: 0.67rem;
+    }
+
+    .bio-timeline__card {
+        padding: 24px 20px 22px;
+        border-radius: 18px;
+    }
+
+    .bio-timeline__card::before {
+        left: 20px;
+    }
+
+    .bio-cv {
+        padding: 28px 22px;
+        border-radius: 22px;
+    }
+
+    .bio-sector {
+        width: 100%;
+        text-align: center;
+    }
+}
