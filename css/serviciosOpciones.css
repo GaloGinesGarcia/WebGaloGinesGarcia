@@ -1,192 +1,434 @@
-/* ================= SERVICIOS OPCIONES ================= */
-/* ================= MODAL PRO ================= */
-
-.service-modal {
-    position: fixed;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-}
-
-
-.service-modal.active {
-    display: flex;
-}
-
-.service-modal__backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,.65);
-    backdrop-filter: blur(6px);
-}
-
-.service-modal__panel {
-    position: relative;
-    width: min(420px, 90%);
-    background: rgba(20,20,20,.9);
-    border: 1px solid rgba(255,255,255,.15);
-    border-radius: 14px;
-    padding: 20px;
-    color: white;
-    transform: scale(0.8);
-    opacity: 0;
-}
-
-.service-modal__panel h3 {
-    margin-bottom: 12px;
-}
-/*Estilo para el botón de cerrar modal*/
-.modal-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: auto;
-    height: auto;
-    background: transparent;
-    border: none;
-    color: #ffffff;
-    font-size: 26px;
-    font-weight: 300;
-    cursor: pointer;
-
-    text-shadow:
-        0 0 5px rgba(0, 200, 255, 0.9),
-        0 0 12px rgba(0, 200, 255, 0.8),
-        0 0 24px rgba(0, 200, 255, 0.6);
-
-    transition: transform 0.2s ease, text-shadow 0.2s ease;
-}
-.modal-close:hover {
-    transform: scale(1.2);
-    text-shadow:
-        0 0 8px rgba(0, 200, 255, 1),
-        0 0 18px rgba(0, 200, 255, 1),
-        0 0 30px rgba(0, 200, 255, 0.9);
-}
-
-.service-modal__panel ul {
-    padding-left: 18px;
-    margin-bottom: 16px;
-}
-
-.btn-ver-opciones {
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,.2);
-    background: rgba(255,255,255,.05);
-    color: white;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.btn-ver-opciones:hover {
-    background: rgba(255,255,255,.12);
-}
+/* ######## REFERENCIA: GRID DE TARJETAS DE SERVICIOS ######## */
 .servicios-opciones {
-    width: min(92%, 1100px);
-    margin: 0 auto 48px;
     display: grid;
-    grid-template-columns: repeat(3, minmax(220px, 1fr));
-    gap: 18px;
-    perspective: 1200px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+
+    width: min(100%, 1080px);
+    margin: 0 auto;
 }
 
-.services-subtitle{
-    color: rgba(255,255,255,.65);
-    font-size: 1rem;
-    letter-spacing: .5px;
-    margin-bottom: 45px;
-}
-
+/* ######## REFERENCIA: TARJETAS PRINCIPALES ######## */
 .servicio-card {
-    background: rgba(255, 255, 255, 0.06);
-    padding: 20px;
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
+    --service-rgb: 95, 156, 255;
+    --service-accent: #9dc4ff;
+
     position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-height: 275px;
+    padding: 28px 24px;
     overflow: hidden;
-    transform-style: preserve-3d;
-    will-change: transform;
-    box-shadow:
-        0 10px 40px rgba(0,0,0,0.3),
-        inset 0 1px 0 rgba(255,255,255,0.05);
-}
+    isolation: isolate;
 
-.servicio-card.s1{
-    background: rgba(249, 249, 7, 0.365);
-}
+    border: 1px solid rgba(var(--service-rgb), 0.34);
+    border-radius: 22px;
 
-.servicio-card.s2{
-    background: rgba(104, 104, 242, 0.416);
-}
+    background:
+        linear-gradient(
+            115deg,
+            rgba(255, 255, 255, 0.16) 0%,
+            rgba(255, 255, 255, 0.045) 22%,
+            transparent 46%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(var(--service-rgb), 0.20) 0%,
+            rgba(11, 15, 24, 0.58) 45%,
+            rgba(0, 0, 0, 0.74) 100%
+        );
 
-.servicio-card.s3{
-    background: rgba(64, 240, 33, 0.268);
-}
-
-.servicio-card:hover {
-
-    transform: translateY(-10px);
-    border-color:
-        white;
+    backdrop-filter: blur(24px) saturate(145%);
+    -webkit-backdrop-filter: blur(24px) saturate(145%);
 
     box-shadow:
-        0 20px 40px black,
-        0 0 40px rgb(47, 113, 255);
+        0 22px 54px rgba(0, 0, 0, 0.30),
+        0 0 0 1px rgba(255, 255, 255, 0.045) inset,
+        0 1px 0 rgba(255, 255, 255, 0.20) inset;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        filter 0.3s ease;
 }
 
-.servicio-card h4 {
-    margin: 0 0 12px;
-    font-size: 1.1rem;
-}
-
+/* ######## REFERENCIA: GLOW INTERNO DE COLOR ######## */
 .servicio-card::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(255, 255, 255, 0.18),
-        transparent 45%
+    z-index: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 88% 8%,
+            rgba(var(--service-rgb), 0.42),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 12% 100%,
+            rgba(var(--service-rgb), 0.16),
+            transparent 48%
+        );
+}
+
+/* ######## REFERENCIA: REFLEJO DE CRISTAL SUPERIOR ######## */
+.servicio-card::after {
+    content: "";
+    position: absolute;
+    top: -48%;
+    left: -30%;
+    z-index: 0;
+
+    width: 92%;
+    height: 82%;
+
+    pointer-events: none;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.23),
+        rgba(255, 255, 255, 0.04) 42%,
+        transparent 70%
     );
 
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    pointer-events: none;
+    border-radius: 50%;
+    transform: rotate(-18deg);
 }
 
-.servicio-card:hover::before {
-    opacity: 1;
+/* ######## REFERENCIA: HOVER CON PROFUNDIDAD ######## */
+.servicio-card:hover {
+    border-color: rgba(var(--service-rgb), 0.74);
+
+    box-shadow:
+        0 28px 65px rgba(0, 0, 0, 0.40),
+        0 0 38px rgba(var(--service-rgb), 0.20),
+        0 0 0 1px rgba(255, 255, 255, 0.10) inset,
+        0 1px 0 rgba(255, 255, 255, 0.24) inset;
+
+    filter: brightness(1.06);
+    transform: translateY(-7px);
 }
 
-.btn-pedir {
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    padding: 12px;
-    color: white;
-    background:
-        linear-gradient(
-            135deg,
-            #22a447,
-            #2bcf5a
-        );
+/* ######## REFERENCIA: COLOR ROJO PARA DESARROLLO WEB ######## */
+.servicio-card--web {
+    --service-rgb: 255, 76, 91;
+    --service-accent: #ff7784;
+}
+
+/* ######## REFERENCIA: COLOR AMARILLO PARA APLICACIONES ######## */
+.servicio-card--apps {
+    --service-rgb: 255, 202, 58;
+    --service-accent: #ffe27a;
+}
+
+/* ######## REFERENCIA: COLOR VERDE PARA COLABORACION ######## */
+.servicio-card--colaboracion {
+    --service-rgb: 76, 221, 141;
+    --service-accent: #8cf0b4;
+}
+
+.servicio-card__number,
+.servicio-card h2,
+.servicio-card p,
+.btn-ver-opciones {
+    position: relative;
+    z-index: 1;
+    align-self: center;
+    text-align: center;
+}
+
+.servicio-card__number {
+    margin-bottom: 22px;
+
+    color: var(--primary-strong);
+    font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: .4px;
+    letter-spacing: 0.14em;
+}
+
+.servicio-card h2 {
+    margin-bottom: 12px;
+
+    color: #ffffff;
+    font-size: 1.42rem;
+    line-height: 1.2;
+}
+
+.servicio-card p {
+    flex: 1;
+    margin-bottom: 24px;
+
+    color: var(--text-muted);
+    line-height: 1.65;
+    text-align: left;
+}
+
+/* ######## REFERENCIA: BOTON QUE ABRE LA MODAL ######## */
+.btn-ver-opciones {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 4px;
+    outline: none;
+
+    color: var(--primary-strong);
+    background: transparent;
+
+    font-size: 0.96rem;
+    font-weight: 700;
+
     cursor: pointer;
+
     transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        background .25s ease;
+        color 0.22s ease,
+        transform 0.22s ease;
+}
+
+.btn-ver-opciones:hover,
+.btn-ver-opciones:focus {
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+.btn-ver-opciones:focus-visible {
+    outline: 2px solid var(--primary-strong);
+    outline-offset: 6px;
+}
+
+/* ######## REFERENCIA: BLOQUEO DE SCROLL CON MODAL ABIERTA ######## */
+body.service-modal-open {
+    overflow: hidden;
+}
+
+/* ######## REFERENCIA: CONTENEDOR GENERAL DE MODAL ######## */
+.service-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+
+    display: grid;
+    place-items: center;
+
+    padding: 20px;
+}
+
+.service-modal[hidden] {
+    display: none;
+}
+
+/* ######## REFERENCIA: FONDO DETRAS DE LA MODAL ######## */
+.service-modal__backdrop {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.76);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* ######## REFERENCIA: VENTANA MODAL ######## */
+.service-modal__panel {
+    position: relative;
+    z-index: 1;
+
+    width: min(100%, 520px);
+    max-height: 88dvh;
+    padding: 34px;
+    overflow-y: auto;
+
+    color: var(--text);
+
+    border: 1px solid rgba(203, 224, 255, 0.2);
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(88, 150, 255, 0.16),
+            transparent 36%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(16, 28, 51, 0.96),
+            rgba(1, 4, 10, 0.97)
+        );
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.62),
+        0 0 42px rgba(69, 133, 255, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    outline: none;
+}
+
+/* ######## REFERENCIA: BOTON CERRAR MODAL ######## */
+.modal-close {
+    position: absolute;
+    top: 17px;
+    right: 18px;
+
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+
+    border: 1px solid rgba(215, 230, 255, 0.16);
+    border-radius: 50%;
+
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.04);
+
+    font-size: 1.7rem;
+    font-weight: 300;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.12);
+    transform: rotate(90deg);
+}
+
+/* ######## REFERENCIA: CONTENIDO INTERNO DE MODAL ######## */
+.service-modal__eyebrow {
+    margin-bottom: 8px;
+
+    color: var(--primary-strong);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.service-modal__panel h2 {
+    max-width: calc(100% - 44px);
+    margin-bottom: 12px;
+
+    color: #ffffff;
+    font-size: clamp(1.8rem, 5vw, 2.35rem);
+    line-height: 1.1;
+}
+
+.service-modal__description {
+    margin-bottom: 22px;
+
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+.service-modal__list {
+    display: grid;
+    gap: 10px;
+
+    margin: 0 0 26px;
+    padding: 0;
+
+    list-style: none;
+}
+
+.service-modal__list li {
+    position: relative;
+
+    padding: 12px 14px 12px 38px;
+
+    color: rgba(242, 247, 255, 0.88);
+    border: 1px solid rgba(201, 221, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.service-modal__list li::before {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 14px;
+
+    color: #8ab8ff;
+    font-weight: 800;
+
+    transform: translateY(-50%);
+}
+
+/* ######## REFERENCIA: BOTON DE CONTACTO FINAL ######## */
+.btn-pedir {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: 100%;
+    min-height: 48px;
+
+    border: 1px solid rgba(185, 214, 255, 0.5);
+    border-radius: 12px;
+
+    color: #ffffff;
+    background: linear-gradient(135deg, #316fd9, #5c9dff);
+
+    font-weight: 700;
+    text-decoration: none;
+
+    box-shadow: 0 10px 26px rgba(50, 117, 230, 0.24);
+
+    transition:
+        filter 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
 }
 
 .btn-pedir:hover {
-    box-shadow: 0 0 30px rgba(43,207,90,.45);
-      
+    filter: brightness(1.08);
+
+    box-shadow: 0 14px 32px rgba(50, 117, 230, 0.34);
+
+    transform: translateY(-2px);
+}
+
+/* ######## REFERENCIA: RESPONSIVE ######## */
+@media (max-width: 900px) {
+    .servicios-opciones {
+        grid-template-columns: 1fr;
+        width: min(100%, 520px);
+    }
+
+    .servicio-card {
+        min-height: 235px;
+    }
+}
+
+@media (max-width: 680px) {
+    .service-modal {
+        padding: 14px;
+    }
+
+    .service-modal__panel {
+        padding: 28px 20px 20px;
+        border-radius: 20px;
+    }
+
+    .modal-close {
+        top: 12px;
+        right: 12px;
+    }
 }

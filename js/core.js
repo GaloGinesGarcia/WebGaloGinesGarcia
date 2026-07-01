@@ -1,64 +1,147 @@
-// ================= FICHERO DE CONFIGURACIÓN GSAP =================
-gsap.registerPlugin(ScrollTrigger);
+// ######## REFERENCIA: ESPACIO GLOBAL DE CONFIGURACION ########
+window.Site = window.Site || {};
 
-// LENIS
-const lenis = new Lenis({
-  duration: 1.2,
-  smooth: true,
-  smoothTouch: false
-});
+(() => {
+    const site = window.Site;
+    const desktopPointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobileQuery = window.matchMedia("(max-width: 680px)");
 
-// RAF loop (ÚNICO)
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
+    let lenis = null;
+    let lenisFrameId = null;
 
-requestAnimationFrame(raf);
+    // ######## REFERENCIA: LECTURA DE PREFERENCIAS DEL DISPOSITIVO ########
+    function updatePreferences() {
+        site.canHover = desktopPointerQuery.matches;
+        site.prefersReducedMotion = reducedMotionQuery.matches;
+        site.isMobile = mobileQuery.matches;
 
-// Sync GSAP
-lenis.on("scroll", ScrollTrigger.update);
+        document.documentElement.classList.toggle("mobile-lite", site.isMobile);
+    }
 
+    // ######## REFERENCIA: REGISTRO UNICO DE GSAP Y SCROLLTRIGGER ########
+    function configureGsap() {
+        if (typeof window.gsap === "undefined") {
+            return;
+        }
 
-gsap.ticker.lagSmoothing(0);
+        if (typeof window.ScrollTrigger !== "undefined") {
+            window.gsap.registerPlugin(window.ScrollTrigger);
 
-document.querySelectorAll(".cards-grid .card").forEach(card => {
+            window.ScrollTrigger.config({
+                ignoreMobileResize: true,
+                autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
+            });
+        }
 
-    card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
+        window.gsap.ticker.lagSmoothing(0);
+    }
 
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+    // ######## REFERENCIA: BUCLE DE ANIMACION PARA LENIS ########
+    function runLenisFrame(time) {
+        if (!lenis) {
+            return;
+        }
 
-        const xPercent = (x / rect.width) * 100;
-        const yPercent = (y / rect.height) * 100;
+        lenis.raf(time);
+        lenisFrameId = window.requestAnimationFrame(runLenisFrame);
+    }
 
-        card.style.setProperty("--x", `${xPercent}%`);
-        card.style.setProperty("--y", `${yPercent}%`);
+    // ######## REFERENCIA: INICIO DE SMOOTH SCROLL SOLO EN ESCRITORIO ########
+    function startLenis() {
+        if (
+            lenis ||
+            !site.canHover ||
+            site.prefersReducedMotion ||
+            typeof window.Lenis === "undefined"
+        ) {
+            return;
+        }
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+        lenis = new window.Lenis({
+            autoRaf: false,
+            lerp: 0.09,
+            wheelMultiplier: 0.9
+        });
 
-        const rotateX = ((y - centerY) / centerY) * -8;
-        const rotateY = ((x - centerX) / centerX) * 8;
+        lenis.on("scroll", () => {
+            if (typeof window.ScrollTrigger !== "undefined") {
+                window.ScrollTrigger.update();
+            }
+        });
 
-        card.style.transform = `
-            perspective(1200px)
-            rotateX(${rotateX}deg)
-            rotateY(${rotateY}deg)
-            translateY(-6px)
-        `;
+        lenisFrameId = window.requestAnimationFrame(runLenisFrame);
+    }
+
+    // ######## REFERENCIA: PARADA DE SMOOTH SCROLL EN MOVIL O MOVIMIENTO REDUCIDO ########
+    function stopLenis() {
+        if (!lenis) {
+            return;
+        }
+
+        if (lenisFrameId) {
+            window.cancelAnimationFrame(lenisFrameId);
+            lenisFrameId = null;
+        }
+
+        lenis.destroy();
+        lenis = null;
+    }
+
+    // ######## REFERENCIA: ACTUALIZACION DE LENIS SEGUN EL DISPOSITIVO ########
+    function updateLenis() {
+        if (site.canHover && !site.prefersReducedMotion) {
+            startLenis();
+            return;
+        }
+
+        stopLenis();
+    }
+
+    // ######## REFERENCIA: EJECUCION SEGURA DESPUES DEL LOADER ########
+    function onTransitionReady(callback) {
+        let executed = false;
+
+        function runCallback() {
+            if (executed) {
+                return;
+            }
+
+            executed = true;
+            callback();
+        }
+
+        if (document.documentElement.dataset.transitionReady === "true") {
+            runCallback();
+            return;
+        }
+
+        window.addEventListener("transitionDone", runCallback, { once: true });
+    }
+
+    // ######## REFERENCIA: UTILIDADES COMPARTIDAS PARA OTROS ARCHIVOS ########
+    site.onTransitionReady = onTransitionReady;
+
+    site.refreshScrollTrigger = () => {
+        if (typeof window.ScrollTrigger !== "undefined") {
+            window.ScrollTrigger.refresh();
+        }
+    };
+
+    // ######## REFERENCIA: ARRANQUE DEL NUCLEO ########
+    updatePreferences();
+    configureGsap();
+    updateLenis();
+
+    desktopPointerQuery.addEventListener("change", () => {
+        updatePreferences();
+        updateLenis();
     });
 
-    card.addEventListener("mouseleave", () => {
-        card.style.transform = `
-            perspective(1200px)
-            rotateX(0deg)
-            rotateY(0deg)
-            translateY(0px)
-        `;
+    reducedMotionQuery.addEventListener("change", () => {
+        updatePreferences();
+        updateLenis();
     });
 
-});
-
-console.log("Core cargado ✔");
+    mobileQuery.addEventListener("change", updatePreferences);
+})();

@@ -1,65 +1,165 @@
-/* ================= MEDIA QUERIES PARA RESPONSIVE ================= */
-@media (max-width: 780px) {
-    
-
-    header h1 {
-        font-size: 2.15rem; /* reduce tamaño en tablet/móvil */
+/* ######## REFERENCIA: TABLET Y PANTALLAS MEDIAS ######## */
+@media (max-width: 900px) {
+    :root {
+        --header-height: 118px;
     }
 
-    nav ul {
-        gap: 1rem;
+    .site-header__content {
+        width: min(94%, 760px);
     }
 
-    header nav ul li a {
-        font-size: 1rem;
+    .site-nav ul {
+        gap: 8px 18px;
     }
 
-    main {
-        margin-top: 180px; /* ajusta espacio según header reducido */
+    .site-nav a {
+        font-size: 0.94rem;
     }
 
-    .servicios-opciones {
+    .contact-layout {
         grid-template-columns: 1fr;
-        width: min(92%, 430px);
-        gap: 14px;
+        width: min(100%, 620px);
+    }
+
+    .panel {
+        min-height: 36vh;
+        padding: 54px 20px;
+    }
+
+    .tech-orbit {
+        width: min(96vw, 650px);
+        opacity: 0.64;
     }
 }
 
-@media (max-width: 480px) {
-    header {
-        padding-top: 35px;
-        padding-bottom: 14px;
-    }
-
-    header > div {
-        width: 100%;
-        max-width: none;
-    }
-
-    .instagram-icon {
-        width: 42%;
-    }
-
-    .linkeding-icon {
-        width: 30%;
-    }
-
-    .servicios-opciones {
-        grid-template-columns: 1fr;
-        width: 90%;
-        gap: 14px;
-    }
-
-    header h1 {
-        font-size: 2rem;
-        margin: 0;
-        white-space: nowrap;
-        line-height: 1.1;
-        text-align: center;
-        width: 100%;
+/* ######## REFERENCIA: MOVIL Y TABLET PEQUENA ######## */
+@media (max-width: 680px) {
+    :root {
+    --header-height: 84px;
     }
 
     main {
-        margin-top: 20px; /* espacio ajustado con header movil mas bajo */
+        padding: 0 18px;
+    }
+
+    .site-header {
+    min-height: var(--header-height);
+    }
+
+    .site-header__content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    min-height: var(--header-height);
+    padding: 0 56px 0 16px;
+}
+
+    .brand-link {
+    display: block;
+    margin: 0;
+
+    font-size: clamp(2.38rem, 6.4vw, 2rem);
+    letter-spacing: 0;
+    line-height: 1;
+    white-space: nowrap;
+
+    transform: none;
+}
+
+    .site-nav {
+        display: none;
+    }
+    .mobile-dropdown {
+    display: block;
+    }
+
+    .hero {
+        min-height: calc(100svh - var(--header-height));
+    }
+
+    .hero-title {
+        max-width: 340px;
+    }
+
+    .hero-subtitle {
+        max-width: 300px;
+
+        font-size: 0.73rem;
+        line-height: 1.5;
+    }
+
+    .hero-text {
+        max-width: 320px;
+        font-size: 0.95rem;
+    }
+
+    .hero-symbol {
+        gap: 6px;
+        margin-bottom: 14px;
+    }
+
+    .panel {
+        min-height: auto;
+        padding: 48px 10px;
+    }
+
+    .section-title {
+        margin-bottom: 8px;
+    }
+
+    .section-text {
+        max-width: 340px;
+        margin-bottom: 12px;
+
+        font-size: 0.95rem;
+    }
+
+    .page-content {
+        padding-top: 40px;
+        padding-bottom: 52px;
+    }
+
+    .content-panel {
+        padding: 24px 20px;
+        border-radius: 18px;
+    }
+
+    .content-panel p {
+        font-size: 0.96rem;
+        line-height: 1.7;
+    }
+
+    .contact-form,
+    .donaciones {
+        padding: 22px 18px;
+        border-radius: 18px;
+    }
+
+    .tech-orbit {
+        width: min(118vw, 560px);
+        opacity: 0.48;
+    }
+
+    body::before {
+        filter: blur(35px);
+    }
+}
+
+/* ######## REFERENCIA: MOVIL MUY ESTRECHO ######## */
+@media (max-width: 390px) {
+    .site-header__content {
+        padding-left: 12px;
+    }
+
+    .brand-link {
+        font-size: 1.72rem;
+    }
+
+    .hero-title {
+        font-size: 2.45rem;
     }
 }

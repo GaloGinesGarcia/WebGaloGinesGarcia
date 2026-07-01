@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Meta básico -->
+    <!-- ######## REFERENCIA: METADATOS ######## -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#000000">
-    <meta name="description" content="Descripción de tu página web">
-    <meta name="author" content="Tu nombre">
-    <title>Mi trayectoria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Galo Ginés García, desarrollador de aplicaciones multiplataforma.">
+    <meta name="author" content="Galo Ginés García">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Biografía | Galo Ginés García</title>
 
-    <!-- CSS Personalizado -->
-     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <!-- ######## REFERENCIA: ESTILOS ######## -->
     <link rel="stylesheet" href="../css/estilo1.css">
     <link rel="stylesheet" href="../css/reposive.css">
     <link rel="stylesheet" href="../css/animationsAndTransitions.css">
@@ -21,28 +17,36 @@
 </head>
 
 <body>
-    <header>
-        <div>
-            <h1><a href="../index.html" style="text-decoration: none; color: inherit;">Galo Ginés García</a></h1>
-            <nav>
+    <!-- ######## REFERENCIA: HEADER ######## -->
+    <header class="site-header">
+        <div class="site-header__content">
+            <a class="brand-link" href="../index.html" aria-label="Ir a inicio">
+                Galo Ginés García
+            </a>
+
+            <nav class="site-nav" aria-label="Navegación principal">
                 <ul>
                     <li><a href="../index.html">Profesión</a></li>
-                    <li><a href="biografia.html">Biografía</a></li>
+                    <li><a href="biografia.html" aria-current="page">Biografía</a></li>
                     <li><a href="servicios.html">Servicios</a></li>
                     <li><a href="tecnologias.html">Tecnologías</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
+
+            <!-- ######## REFERENCIA: MENU MOVIL ######## -->
             <details class="mobile-dropdown">
-                <summary aria-label="Abrir menu movil">
+                <summary aria-label="Abrir menú móvil">
                     <span></span>
                     <span></span>
                     <span></span>
                 </summary>
+
                 <div class="mobile-dropdown__backdrop"></div>
+
                 <ul class="mobile-dropdown__panel">
                     <li><a href="../index.html">Profesión</a></li>
-                    <li><a href="biografia.html">Biografia</a></li>
+                    <li><a href="biografia.html" aria-current="page">Biografía</a></li>
                     <li><a href="servicios.html">Servicios</a></li>
                     <li><a href="tecnologias.html">Tecnologías</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
@@ -50,53 +54,99 @@
             </details>
         </div>
     </header>
-    <main>
-        <h3 class="text-center mb-4 text-white bio-title">Conoce mi trayectoria</h3>
-        <a href="../assets/documments/CV Galo Ginés García.pdf" download><button class="btn btn-primary">Descarga mi CV</button></a>
-        <p class="bio-text">
-             Mi nombre es Galo Ginés García, y mi trayectoria académica y profesional ha estado marcada por una evolución constante, guiada tanto por la curiosidad intelectual como por la adaptación a nuevos intereses. Tras completar el bachillerato, etapa en la que consolidé una base sólida en materias científicas y técnicas, decidí orientar mi futuro hacia un ámbito con amplias salidas profesionales y un fuerte componente analítico.
-            Mi trayectoria académica y profesional ha estado marcada por una evolución constante, guiada tanto por 
-            la curiosidad intelectual como por la adaptación a nuevos intereses. Tras completar el bachillerato, 
-            etapa en la que consolidé una base sólida en materias científicas y técnicas, decidí orientar mi futuro hacia 
-            un ámbito con amplias salidas profesionales y un fuerte componente analítico.
 
-            Fue así como inicié mis estudios en Ingeniería de Minas, una disciplina exigente que me permitió desarrollar 
-            habilidades en áreas como la resolución de problemas complejos, el trabajo técnico y la comprensión de procesos 
-            industriales. Durante esta etapa, adquirí una formación rigurosa que fortaleció mi capacidad de análisis, 
-            planificación y gestión, además de fomentar mi disciplina y constancia.
-        </p>
-        <p class="bio-text">
-            Sin embargo, con el paso del tiempo, descubrí un creciente interés por el mundo de la tecnología y 
-            la informática, un sector en constante evolución y con gran impacto en la sociedad actual. Motivado por esta 
-            inquietud, decidí reorientar mi camino académico hacia un ciclo superior de informática. Esta nueva etapa me 
-            permitió adquirir competencias prácticas en programación, sistemas informáticos y desarrollo tecnológico, 
-            complementando mi formación previa con un perfil más versátil y adaptado a las demandas del mercado laboral actual.
-            En conjunto, mi recorrido refleja una combinación de formación técnica, capacidad de adaptación y una clara 
-            orientación hacia el aprendizaje continuo.
-        </p>
+    <!-- ######## REFERENCIA: CONTENIDO PRINCIPAL ######## -->
+    <main class="page-content">
+        <section class="page-intro" aria-labelledby="bio-title">
+            <p class="page-intro__eyebrow">Trayectoria</p>
+
+            <h1 id="bio-title">Conoce mi trayectoria</h1>
+
+            <p>
+                Formación técnica, adaptación y aprendizaje continuo orientados
+                al desarrollo de software.
+            </p>
+        </section>
+
+        <article class="content-panel">
+            <p>
+                Mi trayectoria académica y profesional ha estado marcada por una
+                evolución constante, guiada tanto por la curiosidad intelectual
+                como por la adaptación a nuevos intereses. Tras completar el
+                bachillerato, etapa en la que consolidé una base sólida en materias
+                científicas y técnicas, decidí orientar mi futuro hacia un ámbito
+                con amplias salidas profesionales y un fuerte componente analítico.
+            </p>
+
+            <p>
+                Fue así como inicié mis estudios en Ingeniería de Minas, una
+                disciplina exigente que me permitió desarrollar habilidades en áreas
+                como la resolución de problemas complejos, el trabajo técnico y la
+                comprensión de procesos industriales. Durante esta etapa, adquirí
+                una formación rigurosa que fortaleció mi capacidad de análisis,
+                planificación y gestión, además de fomentar mi disciplina y constancia.
+            </p>
+
+            <p>
+                Con el paso del tiempo, descubrí un creciente interés por la
+                tecnología y la informática, un sector en constante evolución y con
+                gran impacto en la sociedad actual. Por ello reorienté mi camino
+                académico hacia un ciclo superior de informática, donde adquirí
+                competencias prácticas en programación, sistemas informáticos y
+                desarrollo tecnológico.
+            </p>
+
+            <p>
+                En conjunto, mi recorrido combina formación técnica, capacidad de
+                adaptación y una orientación clara hacia el aprendizaje continuo.
+            </p>
+        </article>
     </main>
-    <footer>
-        <div>
-            <div>
-                <a href="https://www.instagram.com/gaaliitoo_.gg/"  target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                <img src="../assets/images/instagramImg.png" class="social-icon instagram-icon">
+
+    <!-- ######## REFERENCIA: FOOTER ######## -->
+    <footer class="site-footer">
+        <div class="site-footer__content">
+            <div class="social-links" aria-label="Redes sociales">
+                <a
+                    href="https://www.instagram.com/gaaliitoo_.gg/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram de Galo"
+                >
+                    <img
+                        src="../assets/images/instagramImg.png"
+                        class="social-icon"
+                        alt="Instagram"
+                    >
                 </a>
-                <a href="https://www.linkedin.com/in/galo-gin%C3%A9s-garc%C3%ADa-638410287/"  target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                <img src="../assets/images/linkedinImg.png" class="social-icon linkeding-icon">
+
+                <a
+                    href="https://www.linkedin.com/in/galo-gin%C3%A9s-garc%C3%ADa-638410287/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn de Galo"
+                >
+                    <img
+                        src="../assets/images/linkedinImg.png"
+                        class="social-icon"
+                        alt="LinkedIn"
+                    >
                 </a>
             </div>
-            <p class="mb-0">© 2026 Mi Web. Todos los derechos reservados.</p>
+
+            <small>© 2026 Galo Ginés García. Todos los derechos reservados.</small>
         </div>
     </footer>
-    <!-- OVERLAY TRANSICIÓN -->
-    
-<div id="transition-overlay"></div>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="../js/movilOptimization.js"></script>
-<script src="../js/transicion.js?v=2"></script>
-<script src="../js/bio.js"></script>
+
+    <!-- ######## REFERENCIA: LOADER ######## -->
+    <div id="transition-overlay" aria-hidden="true"></div>
+
+    <!-- ######## REFERENCIA: SCRIPTS ######## -->
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js"></script>
+
+    <script defer src="../js/core.js"></script>
+    <script defer src="../js/transicion.js"></script>
 </body>
 </html>
-
-

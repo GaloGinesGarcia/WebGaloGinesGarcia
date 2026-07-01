@@ -1,87 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Meta basico -->
+    <!-- ######## REFERENCIA: METADATOS ######## -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#000000">
-    <meta name="description" content="Pagina de tecnologias de Galo Ginés García">
-    <meta name="keywords" content="tecnologias, desarrollo web, programación, freelance, bussiness">
-    <meta name="robots" content="index, follow">
-    <meta name="Author" content="Galo Gines García">
-    <title>Tecnologías</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tecnologías utilizadas por Galo Ginés García.">
+    <meta name="author" content="Galo Ginés García">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Tecnologías | Galo Ginés García</title>
 
-    <!-- CSS Personalizado -->
-    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <!-- ######## REFERENCIA: ESTILOS ######## -->
     <link rel="stylesheet" href="../css/estilo1.css">
-    <link rel="stylesheet" href="../css/estiloTarjetas.css">
     <link rel="stylesheet" href="../css/reposive.css">
     <link rel="stylesheet" href="../css/animationsAndTransitions.css">
     <link rel="stylesheet" href="../css/exclusivoMovil.css">
+    <link rel="stylesheet" href="../css/estiloTarjetas.css">
 </head>
 
 <body>
-    <div id="tech-bg"></div>
-    <header>
-        <div>
-            <h1><a href="../index.html" style="text-decoration: none; color: inherit;">Galo Gines Garcia</a></h1>
-            <nav>
+    <!-- ######## REFERENCIA: HEADER ######## -->
+    <header class="site-header">
+        <div class="site-header__content">
+            <a class="brand-link" href="../index.html" aria-label="Ir a inicio">
+                Galo Ginés García
+            </a>
+
+            <nav class="site-nav" aria-label="Navegación principal">
                 <ul>
-                    <li><a href="../index.html">Profesion</a></li>
-                    <li><a href="biografia.html">Biografia</a></li>
+                    <li><a href="../index.html">Profesión</a></li>
+                    <li><a href="biografia.html">Biografía</a></li>
                     <li><a href="servicios.html">Servicios</a></li>
-                    <li><a href="tecnologias.html">Tecnologias</a></li>
+                    <li><a href="tecnologias.html" aria-current="page">Tecnologías</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
+
+            <!-- ######## REFERENCIA: MENU MOVIL ######## -->
             <details class="mobile-dropdown">
-                <summary aria-label="Abrir menu movil">
+                <summary aria-label="Abrir menú móvil">
                     <span></span>
                     <span></span>
                     <span></span>
                 </summary>
+
                 <div class="mobile-dropdown__backdrop"></div>
+
                 <ul class="mobile-dropdown__panel">
-                    <li><a href="../index.html">Profesion</a></li>
-                    <li><a href="biografia.html">Biografia</a></li>
+                    <li><a href="../index.html">Profesión</a></li>
+                    <li><a href="biografia.html">Biografía</a></li>
                     <li><a href="servicios.html">Servicios</a></li>
-                    <li><a href="tecnologias.html">Tecnologias</a></li>
+                    <li><a href="tecnologias.html" aria-current="page">Tecnologías</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </details>
         </div>
     </header>
 
-    <main>
-        <h3 class="text-center mb-4 text-white bio-title">Tecnologias utilizables</h3>
+    <!-- ######## REFERENCIA: CONTENIDO PRINCIPAL ######## -->
+    <main class="page-content">
+        <section class="page-intro" aria-labelledby="tech-page-title">
+            <p class="page-intro__eyebrow">Stack técnico</p>
 
-        <div><h5 style="color: white;">Desarrollo Frontend</h5></div>
+            <h1 id="tech-page-title">Tecnologías utilizables</h1>
 
-        <section class="container cards-grid">
+            <p>
+                Herramientas con las que diseño, desarrollo y mantengo soluciones
+                digitales completas.
+            </p>
+        </section>
 
-            <article class="card tech-html5">
-                <div class="card-inner">
+        <!-- ######## REFERENCIA: FRONTEND ######## -->
+        <section class="tech-section" aria-labelledby="frontend-title">
+            <h2 class="tech-section__title" id="frontend-title">
+                Desarrollo frontend
+            </h2>
+
+            <div class="cards-grid">
+                <article class="card tech-html5">
                     <div class="face face1">
                         <div class="content">
                             <h4>HTML5</h4>
-                            <p>Semantica y estructura limpia.</p>
+                            <p>Semántica y estructura limpia.</p>
                         </div>
                     </div>
 
                     <div class="face face2">
                         <div class="content">
-                            <h3>Estructura Web Solida</h3>
-                            <p>Desarrollo maquetado semantico con buenas practicas de accesibilidad y SEO.</p>
+                            <h3>Estructura web sólida</h3>
+                            <p>
+                                Desarrollo maquetado semántico con buenas prácticas
+                                de accesibilidad y SEO.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="card tech-css3">
-                <div class="card-inner">
+                <article class="card tech-css3">
                     <div class="face face1">
                         <div class="content">
                             <h4>CSS3</h4>
@@ -91,37 +105,44 @@
 
                     <div class="face face2">
                         <div class="content">
-                            <h3>Diseno Visual y Responsive</h3>
-                            <p>Creo interfaces adaptables con layouts flexibles, animaciones y estilo consistente.</p>
+                            <h3>Diseño visual y responsive</h3>
+                            <p>
+                                Creo interfaces adaptables con layouts flexibles,
+                                animaciones y estilo consistente.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="card tech-javascript">
-                <div class="card-inner">
+                <article class="card tech-javascript">
                     <div class="face face1">
                         <div class="content">
-                            <h4>JavaScript/TypeScript</h4>
+                            <h4>JavaScript</h4>
                             <p>Interactividad en el navegador.</p>
                         </div>
                     </div>
 
                     <div class="face face2">
                         <div class="content">
-                            <h3>Logica en Cliente</h3>
-                            <p>Implemento interactividad, validaciones y consumo de datos para mejorar la experiencia.</p>
+                            <h3>Lógica en cliente</h3>
+                            <p>
+                                Implemento interactividad, validaciones y consumo de
+                                datos para mejorar la experiencia.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
-
+                </article>
+            </div>
         </section>
 
-        <section class="container cards-grid">
+        <!-- ######## REFERENCIA: BACKEND ######## -->
+        <section class="tech-section" aria-labelledby="backend-title">
+            <h2 class="tech-section__title" id="backend-title">
+                Backend y frameworks
+            </h2>
 
-            <article class="card tech-php">
-                <div class="card-inner">
+            <div class="cards-grid">
+                <article class="card tech-php">
                     <div class="face face1">
                         <div class="content">
                             <h4>PHP</h4>
@@ -131,18 +152,19 @@
 
                     <div class="face face2">
                         <div class="content">
-                            <h3>Backend Web con PHP</h3>
-                            <p>Desarrollo logica de servidor, manejo de formularios y conexion con bases de datos.</p>
+                            <h3>Backend web con PHP</h3>
+                            <p>
+                                Desarrollo lógica de servidor, manejo de formularios
+                                y conexión con bases de datos.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="card tech-angular">
-                <div class="card-inner">
+                <article class="card tech-angular">
                     <div class="face face1">
                         <div class="content">
-                            <h4>Angular/React</h4>
+                            <h4>Angular</h4>
                             <p>Framework para aplicaciones SPA.</p>
                         </div>
                     </div>
@@ -150,17 +172,18 @@
                     <div class="face face2">
                         <div class="content">
                             <h3>SPA con Angular</h3>
-                            <p>Construyo aplicaciones modulares con componentes, servicios y enrutado.</p>
+                            <p>
+                                Construyo aplicaciones modulares con componentes,
+                                servicios y enrutado.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="card tech-node">
-                <div class="card-inner">
+                <article class="card tech-node">
                     <div class="face face1">
                         <div class="content">
-                            <h4>Node</h4>
+                            <h4>Node.js</h4>
                             <p>Runtime para servicios backend.</p>
                         </div>
                     </div>
@@ -168,21 +191,24 @@
                     <div class="face face2">
                         <div class="content">
                             <h3>APIs con Node.js</h3>
-                            <p>Creo servicios backend escalables y endpoints REST.</p>
+                            <p>
+                                Creo servicios backend escalables y endpoints REST
+                                para integrar frontend y base de datos.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
-
+                </article>
+            </div>
         </section>
 
-        <div class="separator"></div>
-        <div><h5 style="color: white;">Desarrollo Backend</h5></div>
+        <!-- ######## REFERENCIA: MULTIPLATAFORMA ######## -->
+        <section class="tech-section" aria-labelledby="multiplatform-title">
+            <h2 class="tech-section__title" id="multiplatform-title">
+                Desarrollo multiplataforma
+            </h2>
 
-        <section class="container cards-grid">
-
-            <article class="card tech-java">
-                <div class="card-inner">
+            <div class="cards-grid">
+                <article class="card tech-java">
                     <div class="face face1">
                         <div class="content">
                             <h4>Java</h4>
@@ -193,51 +219,62 @@
                     <div class="face face2">
                         <div class="content">
                             <h3>Desarrollo con Java</h3>
-                            <p>Programo aplicaciones orientadas a objetos.</p>
+                            <p>
+                                Programo aplicaciones orientadas a objetos con código
+                                robusto y mantenible.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="card tech-python">
-                <div class="card-inner">
+                <article class="card tech-python">
                     <div class="face face1">
                         <div class="content">
                             <h4>Python</h4>
-                            <p>Automatizacion y productividad.</p>
+                            <p>Automatización y productividad.</p>
                         </div>
                     </div>
 
                     <div class="face face2">
                         <div class="content">
-                            <h3>Automatizacion y Datos</h3>
-                            <p>Desarrollo scripts y procesamiento de datos.</p>
+                            <h3>Automatización y datos</h3>
+                            <p>
+                                Desarrollo scripts, utilidades backend y procesamiento
+                                eficiente de información.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="card tech-flutter">
-                <div class="card-inner">
+                <article class="card tech-flutter">
                     <div class="face face1">
                         <div class="content">
                             <h4>Flutter</h4>
-                            <p>Apps moviles multiplataforma.</p>
+                            <p>Apps móviles multiplataforma.</p>
                         </div>
                     </div>
 
                     <div class="face face2">
                         <div class="content">
-                            <h3>Apps Multiplataforma</h3>
-                            <p>Creo aplicaciones Android e iOS.</p>
+                            <h3>Apps multiplataforma</h3>
+                            <p>
+                                Creo aplicaciones móviles para Android e iOS con una
+                                sola base de código.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
+            </div>
         </section>
-        <section class="container cards-grid">
-            <article class="card tech-csharp">
-                <div class="card-inner">
+
+        <!-- ######## REFERENCIA: DATOS Y RENDIMIENTO ######## -->
+        <section class="tech-section" aria-labelledby="data-title">
+            <h2 class="tech-section__title" id="data-title">
+                Datos y rendimiento
+            </h2>
+
+            <div class="cards-grid">
+                <article class="card tech-csharp">
                     <div class="face face1">
                         <div class="content">
                             <h4>C#</h4>
@@ -248,33 +285,37 @@
                     <div class="face face2">
                         <div class="content">
                             <h3>Soluciones con C#</h3>
-                            <p>Desarrollo aplicaciones con enfoque en arquitectura limpia y buen rendimiento.</p>
+                            <p>
+                                Desarrollo aplicaciones con enfoque en arquitectura
+                                limpia y buen rendimiento.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
-            <article class="card tech-sql">
-                <div class="card-inner">
+                </article>
+
+                <article class="card tech-sql">
                     <div class="face face1">
                         <div class="content">
                             <h4>SQL</h4>
-                            <p>Base de datos y consultas eficientes.</p>
+                            <p>Consultas y modelado de datos.</p>
                         </div>
                     </div>
 
                     <div class="face face2">
                         <div class="content">
-                            <h3>Gestion de Bases de Datos</h3>
-                            <p>Diseno consultas, joins y optimizacion de datos para obtener informacion precisa.</p>
+                            <h3>Gestión de bases de datos</h3>
+                            <p>
+                                Diseño consultas, joins y optimización de datos para
+                                obtener información precisa.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
-            <article class="card tech-go">
-                <div class="card-inner">
+                </article>
+
+                <article class="card tech-go">
                     <div class="face face1">
                         <div class="content">
-                            <h4>GO</h4>
+                            <h4>Go</h4>
                             <p>Alto rendimiento y concurrencia.</p>
                         </div>
                     </div>
@@ -282,147 +323,195 @@
                     <div class="face face2">
                         <div class="content">
                             <h3>Servicios en Go</h3>
-                            <p>Construyo APIs y procesos concurrentes de alto rendimiento y baja latencia.</p>
+                            <p>
+                                Construyo APIs y procesos concurrentes de alto
+                                rendimiento y baja latencia.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
+            </div>
         </section>
-        <section class="container cards-grid">
-            <article class="card tech-xml">
-                <div class="card-inner">
+
+        <!-- ######## REFERENCIA: XML ######## -->
+        <section class="tech-section" aria-labelledby="xml-title">
+            <h2 class="tech-section__title" id="xml-title">
+                Datos estructurados
+            </h2>
+
+            <div class="cards-grid">
+                <article class="card tech-xml">
                     <div class="face face1">
                         <div class="content">
                             <h4>XML</h4>
-                            <p>Estructuracion de informacion.</p>
+                            <p>Estructuración de información.</p>
                         </div>
                     </div>
 
                     <div class="face face2">
                         <div class="content">
-                            <h3>Intercambio de Datos</h3>
-                            <p>Estructuro informacion en formato XML para integracion entre sistemas.</p>
+                            <h3>Intercambio de datos</h3>
+                            <p>
+                                Estructuro información en formato XML para
+                                integración entre sistemas.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
-            <article class="card tech-dtd">
-                <div class="card-inner">
+                </article>
+
+                <article class="card tech-dtd">
                     <div class="face face1">
                         <div class="content">
                             <h4>DTD</h4>
-                            <p>Definicion de estructura para documentos XML.</p>
+                            <p>Definición de reglas XML.</p>
                         </div>
                     </div>
 
                     <div class="face face2">
                         <div class="content">
-                            <h3>Validacion de Documentos XML</h3>
-                            <p>Garantizo que los documentos XML cumplan con la estructura definida en el DTD.</p>
+                            <h3>Reglas de estructura XML</h3>
+                            <p>
+                                Defino la estructura válida de documentos XML con
+                                DTD para asegurar consistencia.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
-            <article class="card tech-xsd">
-                <div class="card-inner">
+                </article>
+
+                <article class="card tech-xsd">
                     <div class="face face1">
                         <div class="content">
                             <h4>XSD</h4>
-                            <p>Definicion de estructura para documentos XML.</p>
+                            <p>Esquemas y validación XML.</p>
                         </div>
                     </div>
 
                     <div class="face face2">
                         <div class="content">
-                            <h3>Validacion de Documentos XML</h3>
-                            <p>Garantizo que los documentos XML cumplan con la estructura definida en el XSD.</p>
+                            <h3>Validación con XSD</h3>
+                            <p>
+                                Especifico tipos y restricciones en XML para validar
+                                datos con mayor precisión.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
+            </div>
         </section>
-        <div class="separator"></div>
-        <div><h5 style="color: white;">Repositorios, Versionado y Hosting</h5></div>
-        <section class="container cards-grid">
-            <article class="card tech-git">
-                <div class="card-inner">
+
+        <!-- ######## REFERENCIA: VERSIONADO Y CLOUD ######## -->
+        <section class="tech-section" aria-labelledby="cloud-title">
+            <h2 class="tech-section__title" id="cloud-title">
+                Repositorios, versionado y cloud
+            </h2>
+
+            <div class="cards-grid">
+                <article class="card tech-git">
                     <div class="face face1">
                         <div class="content">
-                            <h4>GIT</h4>
-                            <p>Control de versiones para gestion de codigo.</p>
+                            <h4>Git</h4>
+                            <p>Versionado y trabajo en equipo.</p>
                         </div>
                     </div>
 
                     <div class="face face2">
                         <div class="content">
-                            <h3>Control de Versiones</h3>
-                            <p>Gestiono ramas, historial y colaboracion segura en proyectos de desarrollo..</p>
+                            <h3>Control de versiones</h3>
+                            <p>
+                                Gestiono ramas, historial y colaboración segura en
+                                proyectos de desarrollo.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
-            <article class="card tech-bitbucket">
-                <div class="card-inner">
+                </article>
+
+                <article class="card tech-bitbucket">
                     <div class="face face1">
                         <div class="content">
                             <h4>Bitbucket</h4>
-                            <p>Plataforma de alojamiento de codigo fuente.</p>
+                            <p>Repositorios y colaboración.</p>
                         </div>
                     </div>
 
                     <div class="face face2">
                         <div class="content">
-                            <h3>Repositorios y Flujo</h3>
-                            <p>Organizo repositorios remotos, revisiones y trabajo en equipo con pipelines</p>
+                            <h3>Repositorios y flujo</h3>
+                            <p>
+                                Organizo repositorios remotos, revisiones y trabajo
+                                en equipo con pipelines.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
-            <article class="card tech-aws">
-                <div class="card-inner">
+                </article>
+
+                <article class="card tech-aws">
                     <div class="face face1">
                         <div class="content">
                             <h4>AWS</h4>
-                            <p>Plataforma de computacion en la nube.</p>
+                            <p>Infraestructura y despliegue cloud.</p>
                         </div>
                     </div>
 
                     <div class="face face2">
                         <div class="content">
-                            <h3>Despliegue en la Nube</h3>
-                            <p>Implemento soluciones en la nube para garantizar disponibilidad y escalabilidad.</p>
+                            <h3>Cloud en AWS</h3>
+                            <p>
+                                Despliego y mantengo servicios en la nube con enfoque
+                                en escalabilidad y disponibilidad.
+                            </p>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
+            </div>
         </section>
-        
-        <!-- resto igual, solo sigue replicando card-inner en todas -->
-
     </main>
 
-    <footer>
-        <div>
-            <div>
-                <a href="https://www.instagram.com/gaaliitoo_.gg/" target="_blank" rel="noopener noreferrer">
-                    <img src="../assets/images/instagramImg.png" class="social-icon instagram-icon">
+    <!-- ######## REFERENCIA: FOOTER ######## -->
+    <footer class="site-footer">
+        <div class="site-footer__content">
+            <div class="social-links" aria-label="Redes sociales">
+                <a
+                    href="https://www.instagram.com/gaaliitoo_.gg/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram de Galo"
+                >
+                    <img
+                        src="../assets/images/instagramImg.png"
+                        class="social-icon"
+                        alt="Instagram"
+                    >
                 </a>
-                <a href="https://www.linkedin.com/in/galo-gin%C3%A9s-garc%C3%ADa-638410287/" target="_blank" rel="noopener noreferrer">
-                    <img src="../assets/images/linkedinImg.png" class="social-icon linkeding-icon">
+
+                <a
+                    href="https://www.linkedin.com/in/galo-gin%C3%A9s-garc%C3%ADa-638410287/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn de Galo"
+                >
+                    <img
+                        src="../assets/images/linkedinImg.png"
+                        class="social-icon"
+                        alt="LinkedIn"
+                    >
                 </a>
             </div>
-            <p class="mb-0">&copy; 2026 Mi Web. Todos los derechos reservados.</p>
+
+            <small>© 2026 Galo Ginés García. Todos los derechos reservados.</small>
         </div>
     </footer>
 
-    <div id="transition-overlay"></div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="../js/transicion.js?v=2"></script>
-    <script src="../js/cardsMobileTap.js?v=1"></script>
-    <script src="../js/cardTilt.js"></script>
-    <!-- Script reutilizado del titulo de biografia -->
-    <script src="../js/bio.js"></script>
+    <!-- ######## REFERENCIA: LOADER ######## -->
+    <div id="transition-overlay" aria-hidden="true"></div>
+
+    <!-- ######## REFERENCIA: SCRIPTS ######## -->
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js"></script>
+
+    <script defer src="../js/core.js"></script>
+    <script defer src="../js/cards.js"></script>
+    <script defer src="../js/cardsMobileTap.js"></script>
+    <script defer src="../js/transicion.js"></script>
 </body>
 </html>

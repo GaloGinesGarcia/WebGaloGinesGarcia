@@ -1,8 +1,23 @@
+
 // ================= MOBILE OPTIMIZATION =================
 
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
+const mobileQuery = window.matchMedia("(max-width: 768px)");
 
-// ================= GSAP / SCROLLTRIGGER =================
+function aplicarOptimizacionMovil(evento) {
+    const isMobile = evento.matches;
+
+    document.documentElement.classList.toggle("mobile-lite", isMobile);
+
+    window.ANIMATION_SPEED = isMobile ? 0.7 : 1;
+    window.BIO_STAGGER = isMobile ? 0.005 : 0.02;
+    window.BIO_Y = isMobile ? 5 : 10;
+    window.BIO_DURATION = isMobile ? 0.5 : 0.7;
+    window.BIO_BLUR = isMobile ? 1.25 : 6;
+}
+
+aplicarOptimizacionMovil(mobileQuery);
+mobileQuery.addEventListener("change", aplicarOptimizacionMovil);
+
 if (typeof ScrollTrigger !== "undefined") {
     ScrollTrigger.config({
         ignoreMobileResize: true,
@@ -10,82 +25,17 @@ if (typeof ScrollTrigger !== "undefined") {
     });
 }
 
-// ================= GLOBAL SPEED =================
-window.ANIMATION_SPEED = isMobile ? 0.7 : 0.7;
-
-// ================= OPTIMIZACION CLASE BIO =================
-
-window.BIO_STAGGER = isMobile ? 0.005 : 0.005;
-window.BIO_Y = isMobile ? 5 : 10;
-window.BIO_DURATION = isMobile ? 0.5 : 0.5;
-window.BIO_BLUR = isMobile ? 1.25 : 6;
-
-// ================= MOBILE CLASS =================
-if (isMobile) {
-    document.documentElement.classList.add("mobile-lite");
-}
-
-// ================= DELAY HEAVY ANIMATIONS =================
 window.addEventListener("load", () => {
+    if (!mobileQuery.matches) return;
 
-    if (!isMobile) return;
-
-    // 1. Retrasar orbits para evitar lag inicial
     setTimeout(() => {
-
-        document.querySelectorAll(".orbit").forEach((el) => {
-            el.style.willChange = "transform";
+        document.querySelectorAll(".orbit").forEach((orbit) => {
+            orbit.style.willChange = "transform";
         });
 
-        // activar scroll triggers después de render estable
-        ScrollTrigger.refresh();
-
+        if (typeof ScrollTrigger !== "undefined") {
+            ScrollTrigger.refresh();
+        }
     }, 800);
-
 });
 
-// ================= REDUCE SCROLL WORK =================
-if (isMobile) {
-
-    let ticking = false;
-
-    window.addEventListener("scroll", () => {
-
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                ticking = false;
-            });
-            ticking = true;
-        }
-
-    }, { passive: true });
-}
-
-// ================= LIGHT MODE (GPU OPTIMIZATION) =================
-if (isMobile) {
-
-    const style = document.createElement("style");
-
-    style.innerHTML = `
-        .tech-orbit {
-            opacity: 0.75 !important;
-            transform: translate(-50%, -50%) scale(0.95);
-        }
-
-        .orbit {
-            box-shadow: none !important;
-            filter: none !important;
-        }
-
-        .hero-text,
-        .hero-symbol span {
-            text-shadow: none !important;
-        }
-
-        .core {
-            box-shadow: 0 0 25px rgba(255,255,255,0.25) !important;
-        }
-    `;
-
-    document.head.appendChild(style);
-}

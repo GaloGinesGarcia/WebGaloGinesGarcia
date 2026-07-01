@@ -1,26 +1,25 @@
-/* =========================================================
-   OVERLAY BASE
-========================================================= */
-
+/* ######## REFERENCIA: OVERLAY DE TRANSICION ENTRE PAGINAS ######## */
 #transition-overlay {
     position: fixed;
     inset: 0;
-    background:
-        radial-gradient(circle at 50% 35%, rgba(255, 210, 90, 0.12), transparent 50%),
-        radial-gradient(circle at 20% 80%, rgba(255, 180, 60, 0.08), transparent 45%),
-        #050505;
-
     z-index: 9999;
-    pointer-events: none;
 
     display: grid;
     place-items: center;
 
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 50% 38%, rgba(55, 117, 225, 0.13), transparent 38%),
+        radial-gradient(circle at 18% 84%, rgba(21, 57, 126, 0.08), transparent 44%),
+        #01040b;
+
     opacity: 1;
     visibility: visible;
 
-    transition: opacity 1.2s cubic-bezier(0.22, 0.61, 0.36, 1),
-                visibility 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition:
+        opacity 0.65s cubic-bezier(0.22, 0.61, 0.36, 1),
+        visibility 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 #transition-overlay.hidden {
@@ -28,233 +27,104 @@
     visibility: hidden;
 }
 
-
-/* =========================================================
-   LOADER (SPINNER + TEXT)
-========================================================= */
-
+/* ######## REFERENCIA: CONTENIDO DEL LOADER ######## */
 .loader-stage {
     display: grid;
-    place-items: center;
     gap: 14px;
+    place-items: center;
 
-    transform: translateY(8px) scale(0.97);
     opacity: 0;
+    transform: translateY(8px) scale(0.97);
 
-    animation: stageIn 0.7s ease forwards;
+    animation: loaderStageIn 0.6s ease forwards;
 }
 
 #transition-overlay.quick .loader-stage {
-    animation-duration: 0.3s;
+    animation-duration: 0.25s;
 }
-
-/* ---------- Spinner base ---------- */
 
 .loader-spinner {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-
-    border: 3px solid rgba(255, 215, 0, 0.18);
-    border-top-color: #ffe07e;
-    border-right-color: #fff2ba;
-
-    box-shadow:
-        0 0 35px rgba(255, 215, 0, 0.25),
-        0 0 80px rgba(255, 200, 80, 0.08),
-        inset 0 0 25px rgba(255, 215, 0, 0.10);
-
     position: relative;
 
+    width: 78px;
+    aspect-ratio: 1;
+
+    border: 2px solid rgba(147, 192, 255, 0.18);
+    border-top-color: #a9ccff;
+    border-right-color: #eff6ff;
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 24px rgba(73, 143, 255, 0.22),
+        inset 0 0 20px rgba(122, 174, 255, 0.1);
+
     animation:
-        spin 1.6s linear infinite,
-        pulse 2.4s ease-in-out infinite;
+        loaderSpin 1.2s linear infinite,
+        loaderPulse 1.8s ease-in-out infinite;
 }
 
-/* spinner inner ring */
 .loader-spinner::after {
     content: "";
     position: absolute;
-    inset: 19px;
+    inset: 17px;
 
-    border-radius: 50%;
-    border: 2px solid rgba(255, 215, 0, 0.45);
-    border-left-color: transparent;
+    border: 1px solid rgba(177, 213, 255, 0.52);
     border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: 50%;
 
-    animation: spinReverse 1.8s linear infinite;
+    animation: loaderSpinReverse 1.8s linear infinite;
 }
 
-/* orbit dot */
 .loader-spinner::before {
     content: "";
     position: absolute;
-
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-    background: #ffe8a3;
-
     top: -4px;
     left: calc(50% - 4px);
 
-    box-shadow: 0 0 12px rgba(255, 220, 120, 0.85);
+    width: 8px;
+    aspect-ratio: 1;
 
-    animation: orbitDot 2.2s linear infinite;
+    border-radius: 50%;
+    background: #dbeaff;
+    box-shadow: 0 0 14px rgba(182, 214, 255, 0.9);
 }
 
-/* loader text */
 .loader-title {
-    color: rgba(255, 236, 182, 0.85);
-    font-size: 0.82rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
+    color: rgba(222, 236, 255, 0.84);
+    font-family: "FuenteTitulo", "Poppins", sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.24em;
     text-align: center;
-
-    text-shadow: 0 0 12px rgba(255, 215, 0, 0.25);
-
-    font-family: 'FuenteTitulo', sans-serif;
+    text-transform: uppercase;
 }
 
 #transition-overlay.quick .loader-title {
     opacity: 0;
 }
 
-
-/* =========================================================
-   ORBITA INDEX (PLANETA TECNOLOGICO)
-========================================================= */
-
-.tech-orbit {
-    position: fixed;
-    top: 55%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-    z-index: 0;
-
-    pointer-events: none;
-
-    opacity: 0.9;
-}
-
-.orbit-container {
-    width: 650px;
-    height: 650px;
-}
-
-/* ---------- orbits ---------- */
-
-.orbit {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    border: 1px solid rgba(255, 255, 255, 0.15);
-
-    box-shadow:
-        0 0 12px rgba(255, 255, 255, 0.15),
-        inset 0 0 12px rgba(255, 255, 255, 0.08);
-
-    border-radius: 50%;
-
-    transform-style: preserve-3d;
-}
-
-.orbit::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 6px;
-    height: 6px;
-    background: white;
-    border-radius: 50%;
-    transform: rotate(0deg) translateX(120px);
-    animation: orbitDot 10s linear infinite;
-}
-
-@keyframes orbitDot {
-    from { transform: rotate(0deg) translateX(120px); }
-    to   { transform: rotate(360deg) translateX(120px); }
-}
-
-/* tamaños */
-.orbit-1 { width: 220px; height: 220px; margin: -110px; }
-.orbit-2 { width: 300px; height: 300px; margin: -150px; transform: rotateX(65deg); }
-.orbit-3 { width: 360px; height: 360px; margin: -180px; transform: rotateY(75deg); }
-.orbit-4 { width: 430px; height: 430px; margin: -215px; transform: rotateX(35deg); }
-.orbit-5 { width: 500px; height: 500px; margin: -250px; transform: rotateY(45deg); }
-.orbit-6 { width: 560px; height: 560px; margin: -280px; transform: rotateX(80deg); }
-.orbit-7 { width: 620px; height: 620px; margin: -310px; transform: rotateY(20deg); }
-
-/* planetas */
-.planet {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 6px;
-    height: 6px;
-    background: white;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 10px rgba(255,255,255,0.6);
-}
-
-.p1 { top: 0%; left: 50%; }
-.p2 { top: 50%; left: 100%; }
-.p3 { top: 100%; left: 50%; }
-.p4 { top: 50%; left: 0%; }
-.p5 { top: 25%; left: 75%; }
-
-/* núcleo */
-.core {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-
-    border-radius: 50%;
-    background: white;
-
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    box-shadow:
-        0 0 30px rgba(255, 255, 255, 0.9),
-        0 0 60px rgba(255, 255, 255, 0.7),
-        0 0 120px rgba(255, 255, 255, 0.4);
-}
-
-
-/* =========================================================
-   KEYFRAMES (CENTRALIZADOS)
-========================================================= */
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-@keyframes spinReverse {
-    to { transform: rotate(-360deg); }
-}
-
-@keyframes orbitDot {
+/* ######## REFERENCIA: KEYFRAMES DEL LOADER ######## */
+@keyframes loaderSpin {
     to {
-        transform: rotate(360deg) translateY(45px) rotate(-360deg);
+        transform: rotate(360deg);
     }
 }
 
-@keyframes pulse {
+@keyframes loaderSpinReverse {
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes loaderPulse {
     50% {
         box-shadow:
-            0 0 45px rgba(255, 215, 0, 0.45),
-            inset 0 0 30px rgba(255, 215, 0, 0.18);
+            0 0 34px rgba(73, 143, 255, 0.36),
+            inset 0 0 26px rgba(122, 174, 255, 0.16);
     }
 }
 
-@keyframes stageIn {
+@keyframes loaderStageIn {
     to {
         opacity: 1;
         transform: translateY(0) scale(1);

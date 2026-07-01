@@ -1,157 +1,289 @@
-/* SEGUIMIENTO DE TARJETAS TECNOLÓGICAS AL CURSOR */ 
-/* EN HERO TAMBIEN HAY COSAS */  
-const isMobile = window.matchMedia("(max-width: 780px)").matches;
-document.querySelectorAll(".servicio-card").forEach(card => {
-    if (isMobile) return;
-    card.addEventListener("mousemove", (e) => {
+// ######## REFERENCIA: DATOS DE LOS SERVICIOS ########
+(function () {
+    "use strict";
 
-        const rect = card.getBoundingClientRect();
+    var modal = document.getElementById("serviceModal");
+    var modalPanel = document.querySelector(".service-modal__panel");
+    var modalTitle = document.getElementById("modalTitle");
+    var modalEyebrow = document.getElementById("modalEyebrow");
+    var modalDescription = document.getElementById("modalDescription");
+    var modalList = document.getElementById("modalList");
+    var modalAction = document.getElementById("modalAction");
 
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+    var lastTrigger = null;
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+    var services = {
+        web: {
+            eyebrow: "Desarrollo web",
+            title: "Tu web, bien construida",
+            description: "Diseño y desarrollo una presencia digital moderna, rápida y adaptada a tu objetivo.",
+            actionText: "Solicitar proyecto web",
+            options: [
+                "Landing page orientada a conversión",
+                "Web corporativa profesional",
+                "Portfolio personal o creativo",
+                "Tienda online y catálogo digital"
+            ]
+        },
 
-        const rotateY = ((x - centerX) / centerX) * 12;
-        const rotateX = -((y - centerY) / centerY) * 12;
+        apps: {
+            eyebrow: "Aplicaciones",
+            title: "Aplicaciones para ideas reales",
+            description: "Desarrollo aplicaciones pensadas para simplificar procesos y ofrecer una experiencia útil.",
+            actionText: "Solicitar aplicación",
+            options: [
+                "Aplicación Android",
+                "Aplicación iOS",
+                "App multiplataforma con Flutter",
+                "Aplicación de gestión a medida"
+            ]
+        },
 
-        card.style.transform =
-            `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        colaboracion: {
+            eyebrow: "Colaboración",
+            title: "Apoyo técnico para tu proyecto",
+            description: "Te ayudo a mantener, mejorar o definir una solución digital desde el punto donde estés.",
+            actionText: "Hablar sobre colaboración",
+            options: [
+                "Soporte técnico puntual",
+                "Mantenimiento y mejoras",
+                "Revisión de código y rendimiento",
+                "Consultoría y planificación técnica"
+            ]
+        }
+    };
 
-        card.style.setProperty("--mouse-x", `${x}px`);
-        card.style.setProperty("--mouse-y", `${y}px`);
-    });
-
-    card.addEventListener("mouseleave", () => {
-        card.style.transform =
-            "perspective(1200px) rotateX(0deg) rotateY(0deg)";
-    });
-
-    
-});
-
-// 2. ENTRADA SECUENCIAL (UNO DETRÁS DE OTRO)
-window.addEventListener("transitionDone", () => {
-
-    const cards = document.querySelectorAll(".servicio-card");
-
-    // estado inicial (por seguridad)
-    gsap.set(cards, {
-        opacity: 0,
-        y: 80,
-        rotateX: 15,
-        scale: 0.95
-    });
-
-    const tl = gsap.timeline({
-        defaults: { ease: "power4.out" }
-    });
-
-    tl.to(cards[0], {
-        opacity: 1,
-        y: 0,
-        rotateX: 0,
-        scale: 1,
-        duration: 0.6
-    })
-
-    .to(cards[1], {
-        opacity: 1,
-        y: 0,
-        rotateX: 0,
-        scale: 1,
-        duration: 0.6
-    })
-
-    .to(cards[2], {
-        opacity: 1,
-        y: 0,
-        rotateX: 0,
-        scale: 1,
-        duration: 0.6
-    });
-
-});
-
-const modal = document.getElementById("serviceModal");
-const modalPanel = document.querySelector(".service-modal__panel");
-const modalTitle = document.getElementById("modalTitle");
-const modalList = document.getElementById("modalList");
-
-const data = {
-    web: {
-        title: "Desarrollo Web",
-        items: ["Landing page", "Web corporativa", "Tienda online"]
-    },
-    apps: {
-        title: "Aplicaciones",
-        items: ["App Android", "App iOS", "App multiplataforma"]
-    },
-    colaboracion: {
-        title: "Colaboración",
-        items: ["Soporte técnico", "Mantenimiento", "Consultoría"]
+    // ######## REFERENCIA: COMPROBACION DE ELEMENTOS NECESARIOS ########
+    if (
+        !modal ||
+        !modalPanel ||
+        !modalTitle ||
+        !modalEyebrow ||
+        !modalDescription ||
+        !modalList ||
+        !modalAction
+    ) {
+        console.error("Faltan elementos HTML del modal de servicios.");
+        return;
     }
-};
 
-// abrir modal
-document.querySelectorAll(".btn-ver-opciones").forEach(btn => {
+    // ######## REFERENCIA: RELLENAR CONTENIDO SEGUN EL SERVICIO ########
+    function renderService(service) {
+        var index;
+        var item;
 
-    btn.addEventListener("click", () => {
-
-        const key = btn.dataset.service;
-        const service = data[key];
-
+        modalEyebrow.textContent = service.eyebrow;
         modalTitle.textContent = service.title;
+        modalDescription.textContent = service.description;
+
+        modalAction.innerHTML = service.actionText + ' <span aria-hidden="true">→</span>';
 
         modalList.innerHTML = "";
-        service.items.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = item;
-            modalList.appendChild(li);
+
+        for (index = 0; index < service.options.length; index += 1) {
+            item = document.createElement("li");
+            item.textContent = service.options[index];
+            modalList.appendChild(item);
+        }
+    }
+
+    // ######## REFERENCIA: ABRIR MODAL ########
+    function openModal(serviceKey, trigger) {
+        var service = services[serviceKey];
+
+        if (!service) {
+            return;
+        }
+
+        lastTrigger = trigger;
+
+        renderService(service);
+
+        modal.hidden = false;
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("service-modal-open");
+
+        if (typeof window.gsap !== "undefined") {
+            window.gsap.fromTo(
+                modalPanel,
+                {
+                    opacity: 0,
+                    y: 26,
+                    scale: 0.96
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.42,
+                    ease: "power3.out"
+                }
+            );
+
+            window.gsap.fromTo(
+                ".service-modal__list li",
+                {
+                    opacity: 0,
+                    x: -12
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.3,
+                    stagger: 0.06,
+                    delay: 0.12,
+                    ease: "power2.out"
+                }
+            );
+        }
+
+        window.setTimeout(function () {
+            modalPanel.focus();
+        }, 80);
+    }
+
+    // ######## REFERENCIA: CERRAR MODAL ########
+    function finishClose() {
+        modal.hidden = true;
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("service-modal-open");
+
+        if (lastTrigger) {
+            lastTrigger.focus();
+        }
+    }
+
+    function closeModal() {
+        if (modal.hidden) {
+            return;
+        }
+
+        if (typeof window.gsap === "undefined") {
+            finishClose();
+            return;
+        }
+
+        window.gsap.to(modalPanel, {
+            opacity: 0,
+            y: 18,
+            scale: 0.97,
+            duration: 0.24,
+            ease: "power2.in",
+            onComplete: finishClose
         });
+    }
 
-        modal.classList.add("active");
+    // ######## REFERENCIA: BOTONES QUE ABREN MODAL ########
+    function configureOpenButtons() {
+        var buttons = document.querySelectorAll(".btn-ver-opciones");
+        var index;
 
-        gsap.to(modalPanel, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.4,
+        for (index = 0; index < buttons.length; index += 1) {
+            buttons[index].addEventListener("click", function () {
+                openModal(
+                    this.getAttribute("data-service"),
+                    this
+                );
+            });
+        }
+    }
+
+    // ######## REFERENCIA: CIERRE POR FONDO O BOTON X ########
+    modal.addEventListener("click", function (event) {
+        var target = event.target;
+
+        if (
+            target.hasAttribute("data-modal-close") ||
+            target.classList.contains("service-modal__backdrop")
+        ) {
+            closeModal();
+        }
+    });
+
+    // ######## REFERENCIA: CIERRE CON TECLA ESCAPE ########
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            closeModal();
+        }
+    });
+
+    // ######## REFERENCIA: ANIMACION INICIAL DE TARJETAS ########
+    // ######## REFERENCIA: ENTRADA DIRECCIONAL DE TARJETAS DE SERVICIOS ########
+function animateServiceCards() {
+    var cards = document.querySelectorAll(".servicio-card");
+    var webCard;
+    var appsCard;
+    var collaborationCard;
+    var timeline;
+
+    if (!cards.length || typeof window.gsap === "undefined") {
+        return;
+    }
+
+    webCard = cards[0];
+    appsCard = cards[1];
+    collaborationCard = cards[2];
+
+    if (!webCard || !appsCard || !collaborationCard) {
+        return;
+    }
+
+    window.gsap.set(webCard, {
+        autoAlpha: 0,
+        x: -130,
+        rotateY: -10
+    });
+
+    window.gsap.set(collaborationCard, {
+        autoAlpha: 0,
+        x: 130,
+        rotateY: 10
+    });
+
+    window.gsap.set(appsCard, {
+        autoAlpha: 0,
+        y: 100,
+        scale: 0.96
+    });
+
+    timeline = window.gsap.timeline({
+        defaults: {
+            duration: 0.78,
             ease: "power3.out"
-        });
-
-    });
-
-});
-
-// cerrar modal fuera del panel
-document.querySelector(".service-modal__backdrop").addEventListener("click", () => {
-
-    gsap.to(modalPanel, {
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.3,
-        ease: "power2.in",
-        onComplete: () => {
-            modal.classList.remove("active");
         }
     });
 
-});
-// cerrar modal con botón
-document.querySelector(".modal-close").addEventListener("click", () => {
-
-    const modal = document.getElementById("serviceModal");
-    const panel = document.querySelector(".service-modal__panel");
-
-    gsap.to(panel, {
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.3,
-        ease: "power2.in",
-        onComplete: () => {
-            modal.classList.remove("active");
-        }
+    /* Desarrollo web: entra desde la izquierda */
+    timeline.to(webCard, {
+        autoAlpha: 1,
+        x: 0,
+        rotateY: 0
     });
 
-});
+    /* Colaboración: entra desde la derecha */
+    timeline.to(collaborationCard, {
+        autoAlpha: 1,
+        x: 0,
+        rotateY: 0
+    }, "-=0.28");
+
+    /* Aplicaciones: entra desde abajo */
+    timeline.to(appsCard, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1
+    }, "-=0.24");
+}
+
+    // ######## REFERENCIA: ARRANQUE ########
+    configureOpenButtons();
+
+    if (
+        window.Site &&
+        typeof window.Site.onTransitionReady === "function"
+    ) {
+        window.Site.onTransitionReady(animateServiceCards);
+    } else {
+        window.addEventListener("load", animateServiceCards, { once: true });
+    }
+})();
