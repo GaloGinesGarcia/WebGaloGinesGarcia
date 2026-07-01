@@ -1,0 +1,767 @@
+/* ######## REFERENCIA: CONFIGURACION GENERAL CONTACTO ######## */
+.contact-page {
+    --contact-blue: 102, 165, 255;
+    --contact-violet: 164, 111, 255;
+    --contact-green: 100, 230, 161;
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.contact-page > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ######## REFERENCIA: FONDO AMBIENTAL ######## */
+.contact-page::before,
+.contact-page::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+
+    width: min(60vw, 760px);
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.contact-page::before {
+    top: 2%;
+    right: -340px;
+
+    background: radial-gradient(
+        circle,
+        rgba(var(--contact-blue), 0.19),
+        rgba(var(--contact-blue), 0.06) 38%,
+        transparent 70%
+    );
+
+    filter: blur(16px);
+
+    animation: contactAmbientBlue 18s ease-in-out infinite alternate;
+}
+
+.contact-page::after {
+    bottom: 4%;
+    left: -360px;
+
+    background: radial-gradient(
+        circle,
+        rgba(var(--contact-violet), 0.16),
+        rgba(var(--contact-violet), 0.05) 40%,
+        transparent 70%
+    );
+
+    filter: blur(18px);
+
+    animation: contactAmbientViolet 22s ease-in-out infinite alternate;
+}
+
+@keyframes contactAmbientBlue {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(-90px, 130px, 0) scale(1.13);
+    }
+}
+
+@keyframes contactAmbientViolet {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(110px, -110px, 0) scale(1.12);
+    }
+}
+
+
+/* ######## REFERENCIA: INTRO ######## */
+.contact-intro {
+    max-width: 760px;
+}
+
+.contact-intro p:last-child {
+    max-width: 680px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+/* ######## REFERENCIA: LAYOUT PRINCIPAL ######## */
+.contact-page .contact-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+    gap: 22px;
+    align-items: stretch;
+
+    width: min(100%, 980px);
+    margin: 0 auto;
+}
+
+
+/* ######## REFERENCIA: ESTILO GLASS BASE ######## */
+.contact-direct,
+.contact-page .contact-form,
+.contact-donation,
+.contact-page .donaciones {
+    border: 1px solid rgba(190, 216, 255, 0.20);
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.09),
+            rgba(255, 255, 255, 0.025) 30%,
+            transparent 58%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(19, 36, 66, 0.78),
+            rgba(2, 6, 14, 0.92)
+        );
+
+    box-shadow:
+        0 20px 64px rgba(0, 0, 0, 0.30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+
+    backdrop-filter: blur(18px) saturate(130%);
+    -webkit-backdrop-filter: blur(18px) saturate(130%);
+}
+
+
+/* ######## REFERENCIA: BLOQUE CONTACTO DIRECTO ######## */
+.contact-direct {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: clamp(26px, 4vw, 38px);
+    border-radius: 24px;
+}
+
+.contact-direct::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -84px;
+
+    width: 220px;
+    aspect-ratio: 1;
+
+    border: 1px solid rgba(183, 214, 255, 0.24);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 44px rgba(var(--contact-blue), 0.17),
+        inset 0 0 34px rgba(var(--contact-blue), 0.10);
+}
+
+.contact-direct__eyebrow,
+.contact-form__heading > p,
+.contact-donation__eyebrow {
+    margin: 0 0 10px;
+
+    color: #a8caff;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.contact-direct h2,
+.contact-form__heading h2,
+.contact-donation h2 {
+    margin: 0;
+
+    color: #ffffff;
+    line-height: 1.12;
+}
+
+.contact-direct h2 {
+    position: relative;
+    z-index: 1;
+
+    max-width: 360px;
+    margin-bottom: 16px;
+
+    font-size: clamp(1.75rem, 3.6vw, 2.45rem);
+}
+
+.contact-direct__text {
+    position: relative;
+    z-index: 1;
+
+    margin-bottom: 26px;
+
+    color: rgba(230, 240, 255, 0.72);
+    line-height: 1.72;
+}
+
+
+/* ######## REFERENCIA: CANALES DE CONTACTO ######## */
+.contact-channels {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    gap: 10px;
+}
+
+.contact-channel {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+
+    min-height: 66px;
+    padding: 10px 12px;
+
+    border: 1px solid rgba(188, 216, 255, 0.13);
+    border-radius: 15px;
+
+    color: inherit;
+    background: rgba(255, 255, 255, 0.035);
+
+    text-decoration: none;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.contact-channel:hover {
+    border-color: rgba(173, 210, 255, 0.50);
+    background: rgba(95, 158, 255, 0.11);
+
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+    transform: translateX(5px);
+}
+
+.contact-channel__mark {
+    display: grid;
+    width: 38px;
+    aspect-ratio: 1;
+    place-items: center;
+
+    border: 1px solid rgba(192, 218, 255, 0.24);
+    border-radius: 12px;
+
+    color: #ffffff;
+
+    background: linear-gradient(
+        145deg,
+        rgba(var(--contact-blue), 0.38),
+        rgba(62, 104, 179, 0.16)
+    );
+
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+
+    font-size: 0.80rem;
+    font-weight: 800;
+}
+
+.contact-channel__content {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+}
+
+.contact-channel__content small {
+    color: rgba(213, 229, 255, 0.54);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.contact-channel__content strong {
+    overflow: hidden;
+
+    color: rgba(247, 250, 255, 0.94);
+    font-size: 0.87rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.contact-channel__arrow {
+    color: #b6d4ff;
+    font-size: 1.18rem;
+
+    transition: transform 0.25s ease;
+}
+
+.contact-channel:hover .contact-channel__arrow {
+    transform: translate(2px, -2px);
+}
+
+.contact-direct__availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin: auto 0 0;
+    padding-top: 26px;
+
+    color: rgba(231, 242, 255, 0.72);
+    font-size: 0.84rem;
+}
+
+.contact-direct__availability span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    background: #7eeaa6;
+
+    box-shadow: 0 0 12px rgba(113, 235, 157, 0.76);
+
+    animation: contactAvailabilityPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes contactAvailabilityPulse {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.56;
+        transform: scale(0.72);
+    }
+}
+
+
+/* ######## REFERENCIA: FORMULARIO ######## */
+.contact-page .contact-form {
+    position: relative;
+    overflow: hidden;
+
+    padding: clamp(26px, 4vw, 38px);
+    border-radius: 24px;
+}
+
+.contact-page .contact-form::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    left: -90px;
+
+    width: 250px;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(var(--contact-violet), 0.20),
+        transparent 66%
+    );
+
+    pointer-events: none;
+}
+
+.contact-form__heading,
+.contact-form__group,
+.contact-page .button-primary,
+.contact-page .form-status {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-form__heading {
+    margin-bottom: 26px;
+}
+
+.contact-form__heading h2 {
+    margin-bottom: 10px;
+
+    font-size: clamp(1.55rem, 3vw, 2rem);
+}
+
+.contact-form__heading span {
+    display: block;
+
+    color: rgba(230, 240, 255, 0.66);
+    font-size: 0.94rem;
+    line-height: 1.65;
+}
+
+.contact-page .contact-form__group + .contact-form__group {
+    margin-top: 19px;
+}
+
+.contact-page .contact-form label,
+.contact-page .donaciones label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: rgba(242, 247, 255, 0.91);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-align: left;
+}
+
+.contact-page .contact-form input,
+.contact-page .contact-form textarea,
+.contact-page .donaciones input {
+    width: 100%;
+
+    border: 1px solid rgba(191, 217, 255, 0.16);
+    border-radius: 13px;
+    outline: none;
+
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.26);
+
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+    transition:
+        border-color 0.24s ease,
+        background 0.24s ease,
+        box-shadow 0.24s ease;
+}
+
+.contact-page .contact-form input,
+.contact-page .donaciones input {
+    height: 50px;
+    padding: 0 14px;
+}
+
+.contact-page .contact-form textarea {
+    min-height: 158px;
+    padding: 14px;
+
+    line-height: 1.6;
+    resize: vertical;
+}
+
+.contact-page .contact-form input::placeholder,
+.contact-page .contact-form textarea::placeholder,
+.contact-page .donaciones input::placeholder {
+    color: rgba(206, 224, 255, 0.36);
+}
+
+.contact-page .contact-form input:focus,
+.contact-page .contact-form textarea:focus,
+.contact-page .donaciones input:focus {
+    border-color: rgba(167, 204, 255, 0.70);
+    background: rgba(63, 112, 193, 0.10);
+
+    box-shadow:
+        0 0 0 4px rgba(75, 143, 255, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+
+/* ######## REFERENCIA: BOTON PRINCIPAL ######## */
+.contact-page .button-primary {
+    position: relative;
+    overflow: hidden;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: 100%;
+    min-height: 52px;
+    margin-top: 22px;
+
+    border: 1px solid rgba(220, 235, 255, 0.56);
+    border-radius: 13px;
+
+    color: #07111f;
+    background: linear-gradient(135deg, #ffffff, #b8d5ff);
+
+    box-shadow:
+        0 13px 30px rgba(71, 142, 255, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.94);
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.contact-page .button-primary > span {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-page .button-primary::after {
+    content: "";
+    position: absolute;
+    top: -90%;
+    left: -40%;
+
+    width: 24%;
+    height: 280%;
+
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255, 255, 255, 0.16) 22%,
+        rgba(255, 255, 255, 0.88) 50%,
+        rgba(255, 255, 255, 0.12) 78%,
+        transparent
+    );
+
+    opacity: 0;
+    transform: translateX(-180%) rotate(16deg);
+}
+
+.contact-page .button-primary:hover {
+    filter: brightness(1.05);
+
+    box-shadow:
+        0 17px 38px rgba(71, 142, 255, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.94);
+
+    transform: translateY(-3px);
+}
+
+.contact-page .button-primary:hover::after {
+    animation: contactButtonShine 0.92s ease-out 1;
+}
+
+.contact-page .button-primary:disabled {
+    cursor: wait;
+    filter: grayscale(0.20);
+    opacity: 0.72;
+    transform: none;
+}
+
+@keyframes contactButtonShine {
+    0% {
+        opacity: 0;
+        transform: translateX(-180%) rotate(16deg);
+    }
+
+    18% {
+        opacity: 0.86;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(670%) rotate(16deg);
+    }
+}
+
+.contact-page .form-status {
+    min-height: 24px;
+    margin: 14px 0 0;
+
+    color: rgba(225, 237, 255, 0.66);
+    font-size: 0.90rem;
+    text-align: center;
+}
+
+.contact-page .form-status[data-state="success"] {
+    color: #7eeaa6;
+}
+
+.contact-page .form-status[data-state="error"] {
+    color: #ff9ca9;
+}
+
+
+/* ######## REFERENCIA: DONACIONES ######## */
+.contact-donation {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(290px, 0.72fr);
+    gap: 30px;
+    align-items: center;
+
+    width: min(100%, 980px);
+    margin: clamp(68px, 10vw, 108px) auto 0;
+    padding: clamp(27px, 4vw, 42px);
+
+    border-radius: 26px;
+}
+
+.contact-donation__content h2 {
+    margin-bottom: 13px;
+
+    font-size: clamp(1.7rem, 3.8vw, 2.4rem);
+}
+
+.contact-donation__content > p:not(.contact-donation__eyebrow) {
+    max-width: 590px;
+
+    color: rgba(230, 240, 255, 0.72);
+    line-height: 1.72;
+}
+
+.contact-donation__points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+
+    margin-top: 22px;
+}
+
+.contact-donation__points span {
+    padding: 9px 12px;
+
+    border: 1px solid rgba(193, 217, 255, 0.18);
+    border-radius: 999px;
+
+    color: rgba(236, 245, 255, 0.82);
+    background: rgba(255, 255, 255, 0.04);
+
+    font-size: 0.80rem;
+    font-weight: 700;
+}
+
+.contact-page .donaciones {
+    padding: 22px;
+    border-radius: 19px;
+    text-align: left;
+}
+
+.donaciones__brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    margin-bottom: 20px;
+}
+
+.donaciones__brand img {
+    display: block;
+    width: 116px;
+    max-width: 46%;
+    height: auto;
+    margin: 0;
+}
+
+.donaciones__brand span {
+    color: rgba(222, 238, 255, 0.56);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.donaciones__amount {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.contact-page .donaciones__amount input {
+    padding-right: 58px;
+}
+
+.donaciones__amount span {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+
+    color: rgba(223, 237, 255, 0.55);
+    font-size: 0.78rem;
+    font-weight: 800;
+
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.contact-page .paypal-status {
+    min-height: 22px;
+    margin: 13px 0 0;
+
+    color: rgba(224, 237, 255, 0.60);
+    font-size: 0.82rem;
+    line-height: 1.45;
+    text-align: center;
+}
+
+
+/* ######## REFERENCIA: RESPONSIVE ######## */
+@media (max-width: 820px) {
+    .contact-page .contact-layout,
+    .contact-donation {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-page .contact-layout,
+    .contact-donation {
+        width: min(100%, 620px);
+    }
+
+    .contact-direct {
+        min-height: 470px;
+    }
+}
+
+@media (max-width: 560px) {
+    .contact-page .contact-layout {
+        gap: 15px;
+    }
+
+    .contact-direct,
+    .contact-page .contact-form,
+    .contact-donation {
+        border-radius: 20px;
+    }
+
+    .contact-direct,
+    .contact-page .contact-form {
+        padding: 25px 19px;
+    }
+
+    .contact-direct {
+        min-height: 450px;
+    }
+
+    .contact-channel {
+        grid-template-columns: 35px minmax(0, 1fr) auto;
+        gap: 10px;
+    }
+
+    .contact-channel__mark {
+        width: 35px;
+        border-radius: 10px;
+    }
+
+    .contact-channel__content strong {
+        font-size: 0.80rem;
+    }
+
+    .contact-donation {
+        gap: 24px;
+        padding: 26px 19px;
+    }
+
+    .contact-donation__points {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .contact-donation__points span {
+        text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-page::before,
+    .contact-page::after,
+    .contact-direct__availability span {
+        animation: none;
+    }
+}
