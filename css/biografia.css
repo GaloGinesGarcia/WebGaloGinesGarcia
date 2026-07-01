@@ -1,9 +1,94 @@
-/* ######## REFERENCIA: CONFIGURACION GENERAL BIOGRAFIA ######### */
+/* ######## REFERENCIA: CONFIGURACION GENERAL BIOGRAFIA ######## */
 .bio-page {
     --bio-blue: 103, 163, 255;
     --bio-violet: 164, 112, 255;
     --bio-gold: 255, 198, 75;
     --bio-green: 88, 224, 164;
+
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+}
+
+/* ######## REFERENCIA: CAPAS POR ENCIMA DEL FONDO AMBIENTAL ######## */
+.bio-page > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ######## REFERENCIA: HALO AZUL EN MOVIMIENTO ######## */
+.bio-page::before {
+    content: "";
+    position: absolute;
+    top: 7%;
+    right: -300px;
+    z-index: 0;
+
+    width: min(58vw, 700px);
+    aspect-ratio: 1;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(var(--bio-blue), 0.17) 0%,
+        rgba(var(--bio-blue), 0.07) 34%,
+        transparent 70%
+    );
+
+    filter: blur(12px);
+
+    animation: bioAmbientBlue 18s ease-in-out infinite alternate;
+}
+
+/* ######## REFERENCIA: HALO VIOLETA EN MOVIMIENTO ######## */
+.bio-page::after {
+    content: "";
+    position: absolute;
+    bottom: 12%;
+    left: -320px;
+    z-index: 0;
+
+    width: min(62vw, 760px);
+    aspect-ratio: 1;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(var(--bio-violet), 0.14) 0%,
+        rgba(var(--bio-violet), 0.06) 38%,
+        transparent 70%
+    );
+
+    filter: blur(14px);
+
+    animation: bioAmbientViolet 22s ease-in-out infinite alternate;
+}
+
+/* ######## REFERENCIA: MOVIMIENTO AMBIENTAL ######## */
+@keyframes bioAmbientBlue {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(-90px, 150px, 0) scale(1.14);
+    }
+}
+
+@keyframes bioAmbientViolet {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(110px, -130px, 0) scale(1.12);
+    }
 }
 
 
@@ -194,6 +279,7 @@
 
 /* ######## REFERENCIA: TRAYECTORIA ACADEMICA ######## */
 .bio-timeline {
+    --timeline-progress: 0;
     position: relative;
 
     display: grid;
@@ -202,10 +288,11 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 0 0 0 54px;
-
+    
     list-style: none;
 }
 
+/* ######## REFERENCIA: LINEA BASE DE TRAYECTORIA ######## */
 .bio-timeline::before {
     content: "";
     position: absolute;
@@ -215,15 +302,37 @@
 
     width: 1px;
 
+    background: rgba(184, 212, 255, 0.16);
+
+    box-shadow: 0 0 12px rgba(var(--bio-blue), 0.12);
+}
+
+/* ######## REFERENCIA: PROGRESO ILUMINADO DE TRAYECTORIA ######## */
+.bio-timeline::after {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 18px;
+
+    width: 2px;
+
+    pointer-events: none;
+
     background: linear-gradient(
         to bottom,
-        rgba(var(--bio-blue), 0.08),
-        rgba(var(--bio-blue), 0.72) 18%,
-        rgba(var(--bio-gold), 0.66) 54%,
-        rgba(var(--bio-green), 0.44) 100%
+        rgba(var(--bio-blue), 0.98),
+        rgba(var(--bio-gold), 0.94) 55%,
+        rgba(var(--bio-green), 0.96)
     );
 
-    box-shadow: 0 0 16px rgba(var(--bio-blue), 0.24);
+    box-shadow:
+        0 0 10px rgba(var(--bio-blue), 0.80),
+        0 0 24px rgba(var(--bio-green), 0.30);
+
+    transform: scaleY(var(--timeline-progress));
+    transform-origin: top;
+    will-change: transform;
 }
 
 .bio-timeline__item {
@@ -262,6 +371,24 @@
 
     font-size: 0.73rem;
     font-weight: 700;
+}
+
+/* ######## REFERENCIA: HITO ALCANZADO DURANTE EL SCROLL ######## */
+.bio-timeline__item.is-reached .bio-timeline__index {
+    border-color: rgba(var(--timeline-rgb), 0.96);
+
+    box-shadow:
+        0 0 0 5px rgba(2, 5, 12, 0.88),
+        0 0 26px rgba(var(--timeline-rgb), 0.60);
+}
+
+.bio-timeline__item.is-reached .bio-timeline__card {
+    border-color: rgba(var(--timeline-rgb), 0.52);
+
+    box-shadow:
+        0 22px 56px rgba(0, 0, 0, 0.30),
+        0 0 28px rgba(var(--timeline-rgb), 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
 
 .bio-timeline__card {
@@ -542,6 +669,15 @@
     transform: translateY(-3px);
 }
 
+/* ######## REFERENCIA: SECTOR REVELADO CON BRILLO SUAVE ######## */
+.bio-sector.is-revealed {
+    border-color: rgba(195, 221, 255, 0.30);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.10),
+        0 10px 24px rgba(0, 0, 0, 0.14),
+        0 0 20px rgba(107, 164, 255, 0.10);
+}
 
 /* ######## REFERENCIA: BLOQUE FINAL CV ######## */
 .bio-cv {
@@ -628,7 +764,9 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
     min-width: 202px;
     min-height: 54px;
     padding: 0 22px;
@@ -650,6 +788,56 @@
         box-shadow 0.26s ease,
         filter 0.26s ease,
         transform 0.26s ease;
+}
+
+/* ######## REFERENCIA: REFLEJO DE LUZ DEL BOTON CV ######## */
+.bio-cv__button::after {
+    content: "";
+    position: absolute;
+    top: -70%;
+    left: -55%;
+
+    width: 30%;
+    height: 250%;
+
+    pointer-events: none;
+
+    background: linear-gradient(
+        110deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.08) 25%,
+        rgba(255, 255, 255, 0.72) 50%,
+        rgba(255, 255, 255, 0.10) 72%,
+        transparent 100%
+    );
+
+    opacity: 0;
+    transform: translateX(-160%) rotate(16deg);
+}
+
+/* ######## REFERENCIA: PASADA DE LUZ AL REVELAR EL CV ######## */
+.bio-cv.is-revealed .bio-cv__button::after {
+    animation: bioCvButtonShine 1.15s cubic-bezier(0.22, 0.61, 0.36, 1) 0.28s 1;
+}
+
+@keyframes bioCvButtonShine {
+    0% {
+        opacity: 0;
+        transform: translateX(-160%) rotate(16deg);
+    }
+
+    16% {
+        opacity: 0.85;
+    }
+
+    82% {
+        opacity: 0.42;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(620%) rotate(16deg);
+    }
 }
 
 .bio-cv__button span {
