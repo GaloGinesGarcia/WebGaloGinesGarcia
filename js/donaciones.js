@@ -124,7 +124,7 @@ document.body.appendChild(paypalScript);
     function loadPaypalSdk() {
         if (PAYPAL_CLIENT_ID === "PEGA_AQUI_TU_CLIENT_ID") {
             setDonationStatus(
-                "Añade tu Client ID de PayPal en js/donaciones.js para activar las donaciones."
+                "Actualmente en desarrollo. No se puede procesar la donación. ;)"
             );
 
             return;
