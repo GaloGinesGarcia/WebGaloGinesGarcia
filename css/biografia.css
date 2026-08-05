@@ -4,6 +4,9 @@
     --bio-violet: 164, 112, 255;
     --bio-gold: 255, 198, 75;
     --bio-green: 88, 224, 164;
+    --bio-red: 224, 88, 88;
+    --bio-cyan: 88, 224, 224;
+    --bio-orange: 255, 165, 0;
 
     position: relative;
     isolation: isolate;
@@ -520,6 +523,19 @@
 }
 
 .bio-objective:nth-child(3) {
+    --objective-rgb: var(--bio-red);
+}
+
+/* ######## REFERENCIA: COLORES ESPECIFICOS PARA EXPERIENCIA PROFESIONAL ######## */
+.bio-experience-section .bio-objective:nth-child(1) {
+    --objective-rgb: var(--bio-orange);
+}
+
+.bio-experience-section .bio-objective:nth-child(2) {
+    --objective-rgb: var(--bio-cyan);
+}
+
+.bio-experience-section .bio-objective:nth-child(3) {
     --objective-rgb: var(--bio-green);
 }
 
