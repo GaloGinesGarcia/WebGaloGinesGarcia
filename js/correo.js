@@ -2,9 +2,9 @@
 (function () {
     "use strict";
 
-    var EMAILJS_PUBLIC_KEY = "d8aGSJLv7JC6fVDx5";
-    var EMAILJS_SERVICE_ID = "service_8nqf4za";
-    var EMAILJS_TEMPLATE_ID = "template_p38ydhd";
+    var EMAILJS_PUBLIC_KEY = "stG8tmmw2bwvii2IL";
+    var EMAILJS_SERVICE_ID = "service_wi5ydb9";
+    var EMAILJS_TEMPLATE_ID = "template_vtcynlo";
 
     var form = document.getElementById("contactForm");
     var status = document.getElementById("formStatus");
